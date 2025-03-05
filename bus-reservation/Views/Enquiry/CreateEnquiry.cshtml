@@ -1,0 +1,144 @@
+﻿@model bus_reservation.Models.Enquiry
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Search Availability";
+    string userRole = User.FindFirstValue(ClaimTypes.Role); // Get the role from the logged-in user's claims
+
+    if (userRole == "Admin")
+    {
+        Layout = "~/Views/Shared/AdminLayout.cshtml";
+    }
+    else if (userRole == "Employee")
+    {
+        Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+    }
+    else
+    {
+        Layout = null; // Default or no layout
+    }
+}
+<div class="container-fluid pt-4 px-4 bg-dark">
+    <h1 class="fw-bolder text-secondary">Enquiry</h1>
+    <hr />
+    <div class="row g-4">
+        <div class="bg-dark rounded h-100 p-4">
+            <form asp-action="CreateEnquiry" id="enquiryForm">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="StartingPlace" class="control-label"></label>
+                                <select asp-for="StartingPlace" class="form-control" asp-items="ViewBag.Locations" id="startingPlace">
+                                    <option value="">-- Select Starting Place --</option>
+                                </select>
+                                <span asp-validation-for="StartingPlace" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="DestinationPlace" class="control-label"></label>
+                                <select asp-for="DestinationPlace" class="form-control" asp-items="ViewBag.Locations" id="destinationPlace">
+                                    <option value="">-- Select Destination Place --</option>
+                                </select>
+                                <span asp-validation-for="DestinationPlace" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <span id="locationError" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="form-group">
+                        <label asp-for="TravelDate" class="control-label"></label>
+                        <input asp-for="TravelDate" class="form-control" id="travelDate" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")"/>
+                        <span id="travelDateError" class="text-danger"></span> <!-- Error message span -->
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-12 mt-4 mb-2">
+                    <div class="form-group">
+                        <input type="submit" value="Search" class="btn btn-outline-success w-100" style="background-color: transparent;font-weight:bolder; color: white; border-radius:10px; border: 3px solid #FF5733; width: 100%; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+                               onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+                               onmouseout="this.style.backgroundColor='transparent'; this.style.color='Whitesmoke' " />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const travelDateInput = document.getElementById('travelDate');
+    const travelDateError = document.getElementById('travelDateError');
+    const locationError = document.getElementById('locationError');
+    const startingPlaceSelect = document.getElementById('startingPlace');
+    const destinationPlaceSelect = document.getElementById('destinationPlace');
+
+    function validateForm(event) {
+        const travelDate = new Date(travelDateInput.value);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Set hours to 00:00:00 to compare dates only
+
+        // Clear previous error messages
+        travelDateError.textContent = '';
+
+        // Validate travel date
+        if (travelDate < today) {
+            travelDateError.textContent = 'Travel date must not be less than today.';
+            event.preventDefault(); // Prevent form submission
+            return false; // Exit the function
+        }
+
+        // Validate that starting place and destination place are not the same
+        if (startingPlaceSelect.value === destinationPlaceSelect.value && startingPlaceSelect.value !== "") {
+            locationError.textContent = 'Starting place and destination place must not be the same.';
+            event.preventDefault(); // Prevent form submission
+            return false; // Exit the function
+        }
+
+        // If all validations pass, clear error messages
+        travelDateError.textContent = '';
+        return true; // Allow form submission
+    }
+
+    // Validate on form submit
+    document.getElementById('enquiryForm').addEventListener('submit', function (event) {
+        validateForm(event);
+    });
+
+    // Validate on input change
+    startingPlaceSelect.addEventListener('change', function () {
+        validateForm(new Event('change'));
+    });
+
+    destinationPlaceSelect.addEventListener('change', function () {
+        validateForm(new Event('change'));
+    });
+
+    travelDateInput.addEventListener('input', function () {
+        validateForm(new Event('input'));
+    });
+
+    // Additional event listeners to clear errors on valid inputs
+    startingPlaceSelect.addEventListener('input', function () {
+        if (startingPlaceSelect.value !== "" && destinationPlaceSelect.value !== "" && startingPlaceSelect.value !== destinationPlaceSelect.value) {
+            travelDateError.textContent = ''; // Clear error if valid
+        }
+    });
+
+    destinationPlaceSelect.addEventListener('input', function () {
+        if (startingPlaceSelect.value !== "" && destinationPlaceSelect.value !== "" && startingPlaceSelect.value !== destinationPlaceSelect.value) {
+            locationError.textContent = ''; // Clear error if valid
+        }
+    });
+
+    travelDateInput.addEventListener('input', function () {
+        const travelDate = new Date(travelDateInput.value);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Set hours to 00:00:00 to compare dates only
+
+        if (travelDate >= today) {
+            travelDateError.textContent = ''; // Clear error if valid
+        }
+    });
+</script>

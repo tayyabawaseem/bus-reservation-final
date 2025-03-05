@@ -1,0 +1,87 @@
+﻿@model IEnumerable<bus_reservation.Models.Bus>
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Searched Buses";
+    string userRole = User.FindFirstValue(ClaimTypes.Role); // Get the role from the logged-in user's claims
+
+    if (userRole == "Admin")
+    {
+        Layout = "~/Views/Shared/AdminLayout.cshtml";
+    }
+    else if (userRole == "Employee")
+    {
+        Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+    }
+    else
+    {
+        Layout = null; // Default or no layout
+    }
+    int serialNumber = 1;
+}
+
+<div class="container-fluid pt-4 px-4 bg-dark">
+    <h1 style="color:gray; font-weight:bolder;">Available Buses</h1>
+    <hr />
+    <div class="row g-4 my-2">
+        <div class="bg-dark rounded h-100 p-4">
+    <table class="table datatable text-center py-3">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>
+                    Bus Number
+                </th>
+                <th>
+                    Bus Type
+                </th>
+                <th>
+                    Arrival Time
+                </th>
+                <th>
+                    Departure Time
+                </th>
+                <th>
+                    Available Seats
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var bus in Model)
+                {
+                    <tr>
+                        <td>@serialNumber</td>
+                        <td>
+                            @bus.BusNumber
+                        </td>
+                        <td>
+                            @bus.BusType.BusTypeName
+                        </td>
+                        <td>
+                            @String.Format("{0:dd/MM/yyyy hh:mm tt}", bus.DepartureTime)
+                        </td>
+
+                        <td>
+                            @String.Format("{0:dd/MM/yyyy hh:mm tt}", bus.ArrivalTime)
+                        </td>
+                        <td>
+                            @bus.AvailableSeats
+                        </td>
+
+                        
+                    </tr>
+                    serialNumber++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center">No Result Found</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+        </div>
+    </div>
+</div>

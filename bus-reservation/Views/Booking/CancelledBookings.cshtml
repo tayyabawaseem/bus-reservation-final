@@ -1,0 +1,71 @@
+﻿@model IEnumerable<bus_reservation.Models.BookingViewModel>
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Cancelled Bookings";
+    string userRole = User.FindFirstValue(ClaimTypes.Role); // Get the role from the logged-in user's claims
+
+    if (userRole == "Admin")
+    {
+        Layout = "~/Views/Shared/AdminLayout.cshtml";
+    }
+    else if (userRole == "Employee")
+    {
+        Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+    }
+    else
+    {
+        Layout = null; // Default or no layout
+    }
+}
+
+<div class="container-fluid pt-4 px-4 bg-dark">
+    <h1 style="font-weight:bolder; color :gray;">Cancelled Bookings</h1>
+
+    <table class="table datatable text-center py-3">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Customer Name</th>
+                <th>Booking Date</th>
+                <th>Bus</th>
+                <th>Route Name</th>
+                <th>Fare (in Rs.)</th>
+                <th>Refundable Fare</th>
+                <th>Travel Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                int serialNumber = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@serialNumber</td>
+                        <td>@Html.DisplayFor(modelItem => item.CustomerName)</td>
+                        <td>@String.Format("{0:dd/MM/yyyy hh:mm tt}", item.BookingDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BusCode) - @Html.DisplayFor(modelItem => item.BusTypeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.RouteName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Fare)</td>
+                        <td>@Html.DisplayFor(modelItem => item.RefundAmount)</td>
+                        <td>@String.Format("{0:dd/MM/yyyy hh:mm tt}", item.Arrivaltime) to @String.Format("{0:dd/MM/yyyy hh:mm tt}", item.Departuretime)</td>
+                        <td> 
+                            <a asp-action="Details" asp-route-id="@item.BookingId" style="color: #FF5733;">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.BookingId" style="color: #FF5733;">Delete</a>
+                            
+                        </td>
+                    </tr>
+                    serialNumber++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="14" class="text-center">No Cancelled Bookings Found</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

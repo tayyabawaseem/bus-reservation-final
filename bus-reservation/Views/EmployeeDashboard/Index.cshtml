@@ -1,0 +1,227 @@
+﻿@model bus_reservation.Models.DashboardViewModel
+@{
+    ViewData["Title"] = "Employee Dashboard";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+    int serialNumberfortodaybus = 1;
+    int serialNumberfortomorrowbus = 1;
+}
+
+
+
+<style>
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    .content-wrapper {
+        background-color: gray;
+    }
+
+    .border-primary {
+        border-color: #FF5733 !important;
+    }
+
+    .small-box:hover {
+        text-decoration: none;
+    }
+
+    .bg-light, .bg-light > a {
+        color: whitesmoke !important;
+    }
+
+    .bg-light {
+        background-color: gray !important;
+    }
+
+    .small-box {
+        border-radius: .25rem;
+        box-shadow: 0 0 1px rgba(0,0,0,.125),0 1px 3px rgba(0,0,0,.2);
+        display: block;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    }
+
+    .border {
+        border: 1px solid #FF5733 !important;
+    }
+
+    .small-box > .inner {
+        padding: 10px;
+    }
+
+    .small-box h3 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin: 0 0 10px;
+        padding: 0;
+        white-space: nowrap;
+    }
+
+    .small-box h3, .small-box p {
+        z-index: 5;
+    }
+
+    .small-box p {
+        font-size: 13px;
+    }
+
+    .small-box:hover .icon > i, .small-box:hover .icon > i.fa, .small-box:hover .icon > i.fab, .small-box:hover .icon > i.fad, .small-box:hover .icon > i.fal, .small-box:hover .icon > i.far, .small-box:hover .icon > i.fas, .small-box:hover .icon > i.ion {
+        transform: scale(1.1);
+    }
+    /* .small-box .icon {
+            color: rgba(0,0,0,.15);
+            z-index: 0;
+        } */
+    .small-box .icon > i.fa, .small-box .icon > i.fab, .small-box .icon > i.fad, .small-box .icon > i.fal, .small-box .icon > i.far, .small-box .icon > i.fas, .small-box .icon > i.ion {
+        font-size: 70px;
+        top: 20px;
+    }
+
+    .small-box .icon > i {
+        font-size: 70px;
+        position: absolute;
+        right: 15px;
+        top: -5px;
+        transition: transform .3s linear;
+    }
+
+    .fa, .fas {
+        font-weight: 900;
+        color:whitesmoke;
+    }
+
+    .fa, .far, .fas {
+        font-family: "Font Awesome 5 Free";
+    }
+
+    .fa, .fab, .fad, .fal, .far, .fas {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+    }
+
+    .fa-building:before {
+        content: "\f1ad";
+    }
+
+    .heading {
+        text-align: center;
+        color: #FF5733 !important;
+        margin: 20px 0;
+    }
+
+    .breadcrumb-item.active {
+        color: #FF5733 !important;
+    }
+</style>
+<section class="p-4 bg-dark" style="background-color:black; border-top: 4px solid #FF5733; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+    <div class="pagetitle bg-dark">
+        <h1 style="font-weight:bolder; color:dimgray;">Employee Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Admin" style="color:gray">Home</a></li>
+                <li class="breadcrumb-item active" style="color:#FF5733;">Dashboard</li>
+            </ol>
+        </nav>
+    </div>
+
+    <section class="section dashboard my-4">
+        <h3 class="heading">Buses Departured or Arrived Today</h3>
+        <table class="table datatable text-center py-3">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Bus Number</th>
+                    <th>Total Seats</th>
+                    <th>Available Seats</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Bus Type</th>
+                    <th>Route</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model?.BusesToday != null && Model.BusesToday.Any())
+                {
+                    @foreach (var item in Model.BusesToday)
+                    {
+                        <tr>
+                            <td>@serialNumberfortodaybus</td>
+                            <td>@item.BusNumber</td>
+                            <td>@item.TotalSeats</td>
+                            <td>@item.AvailableSeats</td>
+                            <td>@String.Format("{0:dd/MM/yyyy hh:mm tt}", item.DepartureTime)</td>
+                            <td>@String.Format("{0:dd/MM/yyyy hh:mm tt}", item.ArrivalTime)</td>
+                            <td>@item.BusType.BusTypeName</td>
+                            <td>
+                                @item.Route.RouteName (@item.Route.StartingPlaceNavigation.LocationName - @item.Route.DestinationPlaceNavigation.LocationName)
+                            </td>
+
+                        </tr>
+                        serialNumberfortodaybus++;
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8" class="text-center">No Bus Found</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h3 class="heading">Buses Departured or Arrived Tomorrow</h3>
+        <table class="table datatable text-center py-3">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Bus Number</th>
+                    <th>Total Seats</th>
+                    <th>Available Seats</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Bus Type</th>
+                    <th>Route</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model?.BusesTomorrow != null && Model.BusesTomorrow.Any())
+                {
+                    @foreach (var item in Model.BusesTomorrow)
+                    {
+                        <tr>
+                            <td>@serialNumberfortomorrowbus</td>
+                            <td>@item.BusNumber</td>
+                            <td>@item.TotalSeats</td>
+                            <td>@item.AvailableSeats</td>
+                            <td>@String.Format("{0:dd/MM/yyyy hh:mm tt}", item.DepartureTime)</td>
+                            <td>@String.Format("{0:dd/MM/yyyy hh:mm tt}", item.ArrivalTime)</td>
+                            <td>@item.BusType.BusTypeName</td>
+                            <td>
+                                @item.Route.RouteName (@item.Route.StartingPlaceNavigation.LocationName - @item.Route.DestinationPlaceNavigation.LocationName)
+                            </td>
+                        </tr>
+                        serialNumberfortomorrowbus++;
+                    }
+                }
+                else
+                {
+                    <tr>    
+                        <td colspan="8" class="text-center">No Bus Found</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </section>
+
+
+</section>

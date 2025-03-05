@@ -1,0 +1,158 @@
+﻿@model bus_reservation.Models.Employee
+
+@{
+    ViewData["Title"] = "Employee Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<style>
+    dd ,dt
+    {
+        color : whitesmoke
+    }
+</style>
+<div class="container-fluid pt-4 px-4 bg-dark">
+    <h1 style="font-weight:bolder; color:gray;">Employee Details</h1>
+
+
+    @* <h4>Employee</h4> *@
+    <hr />
+        <div class="row g-4 my-2">
+            <div class="bg-dark rounded h-100 p-4">
+            
+    <dl class="row">
+                <div class="text-center mb-4">
+                    <img src="@Html.DisplayFor(model => model.EmployeeImage)" style="height:150px; width:150px; border-radius:100%;border: 5px solid whitesmoke;">
+                </div>
+                <div class="text-center mb-4">
+                    <h1 style="font-weight:bolder; color:#FF5733;">Employee Details</h1>
+                </div>
+                <dt class="col-sm-2">
+                    Employee Code
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Id)
+                </dd>
+               
+        <dt class = "col-sm-2">
+            Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Father Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fathername)
+        </dd>
+        <dt class = "col-sm-2">
+            Email
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            Age
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class = "col-sm-2">
+            Date of Birth
+        </dt>
+        <dd class = "col-sm-10">
+            @String.Format("{0:dd/MM/yyyy}", Model.Dob)
+        </dd>
+        <dt class = "col-sm-2">
+            Martial Status
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MartialStatus)
+        </dd>
+        <dt class = "col-sm-2">
+            Contact
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Contact)
+        </dd>
+        <dt class = "col-sm-2">
+            Qualification
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Qualification)
+        </dd>
+        <dt class = "col-sm-2">
+            Address
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2">
+            Designation
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Designation)
+        </dd>
+        <dt class = "col-sm-2">
+            Salary
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+                <div class="text-center mb-4">
+                    <h1 style="font-weight:bolder; color:#FF5733;">Branch Details</h1>
+                </div>
+        <dt class="col-sm-2">
+            Branch Code
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Branch.BranchCode)
+        </dd>
+                <dt class="col-sm-2">
+                    Address
+                </dt>
+
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Branch.Address)
+                </dd>
+                <dt class="col-sm-2">
+                   Contact
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Branch.Contact)
+                </dd>
+                <dt class="col-sm-2">
+                    City
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Branch.City)
+                </dd>
+                <dt class="col-sm-2">
+                    State
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Branch.State)
+                </dd>
+                <dt class="col-sm-2">
+                    Zip Code
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Branch.ZipCode)
+                </dd>
+    </dl>
+            <div class="text-center">
+                <a class="btn btn-outline-success" style="background-color: transparent;font-weight:bolder; color: white; border-radius:10px; border: 3px solid #FF5733; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+                   onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+                   onmouseout="this.style.backgroundColor='transparent'; this.style.color='Whitesmoke' " asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+                <a class="btn btn-outline-success" asp-action="Index" style="background-color: dimgrey;font-weight:bolder; color: whitesmoke; border-radius:10px; border: 3px solid; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+                   onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+                   onmouseout="this.style.backgroundColor='dimgrey'; this.style.color='Whitesmoke';">Back to List</a> <br /> <br />
+            </div>
+            </div>
+</div>
+        
+        </div>
+
+</div>

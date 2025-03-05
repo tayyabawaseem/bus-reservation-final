@@ -1,0 +1,240 @@
+﻿@model bus_reservation.Models.Employee
+
+@{
+    ViewData["Title"] = "Your Profile";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+    var Message = TempData["Message"] as string;
+}
+
+<style>
+    .breadcrumb-item.active {
+    color: gray !important;
+}
+
+</style>
+
+<div class="pagetitle ">
+    <h1 style="color:dimgray;font-weight:bolder;">Profile</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="EmployeeDashboard" style="color:gray">Home</a></li>
+            <li class="breadcrumb-item active text-secondary" style="color:#FF5733">Profile</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section profile bg-dark">
+    <div class="row">
+        <div class="col-xl-4">
+
+            <div class="card bg-dark">
+                <div class="card-body profile-card pt-4 d-flex flex-column align-items-center bg-dark">
+
+                    <img src="@Html.DisplayFor(model => model.EmployeeImage)" alt="Profile" class="rounded-circle">
+                    <h2 style="color:#FF5733;">@Html.DisplayFor(model => model.Name)</h2>
+                    <h3 style="color:#FF5733;">@Html.DisplayFor(model => model.Designation)</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xl-8">
+
+            <div class="card bg-dark">
+                <div class="card-body pt-3 bg-dark">
+                    <!-- Bordered Tabs -->
+                    <ul class="nav nav-tabs nav-tabs-bordered bg-dark" style="color:#FF5733;">
+
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" style="color:#FF5733;">Profile</button>
+                        </li>
+
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password" style="color:#FF5733;">Change Password</button>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content pt-2 bg-dark">
+
+                        <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                            @if (!string.IsNullOrEmpty(Message))
+                            {
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>@Message</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            }
+                            <h5 class="card-title" style="color:#FF5733;">Profile Details</h5>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label " style="color:#FF5733;">Full Name</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Name)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Father Name</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Fathername)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Email</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Email)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Age</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Age)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Date of Birth</div>
+                                <div class="col-lg-9 col-md-8 text-light">@String.Format("{0:dd/MM/yyyy}", Model.Dob)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Contact</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Contact)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Address</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Address)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Martial Status</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.MartialStatus)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Qualification</div>
+                                <div class="col-lg-9 col-md-8">@Html.DisplayFor(model => model.Qualification)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Salary</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Salary)</div>
+                            </div>
+
+                            <div class="row text-center fs-2">
+                                <div class="col-12 label" style="color:#FF5733;">Branch Details</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Branch Code</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Branch.BranchCode)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Branch Address</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Branch.Address)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Branch City</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Branch.City)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;">Branch State</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Branch.State)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;>Branch ZipCode</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Branch.ZipCode)</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label" style="color:#FF5733;>Branch Contact</div>
+                                <div class="col-lg-9 col-md-8 text-light">@Html.DisplayFor(model => model.Branch.Contact)</div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane fade pt-3" id="profile-change-password">
+
+                            <form asp-action="changepassword" asp-controller="EmployeeDashboard" id="passwordForm">
+
+                                <div class="row g-4">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="form-group input-group">
+                                            <label asp-for="Password" class="control-label"></label>
+                                            <div class="input-group">
+                                                <input type="password" asp-for="Password" class="form-control" id="password" required placeholder="Password should be 5 to 15 characters" />
+
+                                                <button type="button" class="btn" style="background-color:#FF5733;" id="togglePassword">
+                                                    <i class="fas fa-eye" id="eyeIcon"></i>
+                                                </button>
+                                            </div>
+
+                                            <span id="passwordError" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-xl-12 mt-4 mb-2">
+                                    <div class="form-group">
+                                        <input type="submit" value="Change Password" class="btn w-100" style="background-color: transparent;font-weight:bolder; color: white; border-radius:10px; border: 3px solid #FF5733; width: 100%; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+                                               onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+                                               onmouseout="this.style.backgroundColor='transparent'; this.style.color='Whitesmoke' " />
+                                    </div>
+                                </div>
+                            </form>
+
+                           
+
+
+                        </div>
+
+                    </div><!-- End Bordered Tabs -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Eye toggle button
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordField = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = "password";
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        });
+
+        // Password validation
+        document.getElementById('password').addEventListener('input', function () {
+            const password = this.value;
+            const passwordError = document.getElementById('passwordError');
+            const passwordRegex = /^.{5,15}$/;
+
+            if (!passwordRegex.test(password)) {
+                passwordError.textContent = "Password must be between 5 and 15 characters.";
+            } else {
+                passwordError.textContent = "";
+            }
+        });
+
+        // Form submission validation
+        document.getElementById('passwordForm').addEventListener('submit', function (e) {
+            const password = document.getElementById('password').value;
+            const passwordRegex = /^.{5,15}$/;
+
+            if (!passwordRegex.test(password)) {
+                e.preventDefault(); // Prevent form submission if password is invalid
+                document.getElementById('passwordError').textContent = "Password must be between 5 and 15 characters.";
+            }
+        });
+    });
+</script>

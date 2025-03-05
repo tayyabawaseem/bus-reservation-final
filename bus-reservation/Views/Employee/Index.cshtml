@@ -1,0 +1,100 @@
+﻿@model IEnumerable<bus_reservation.Models.Employee>
+@{
+    ViewData["Title"] = "Employee List";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int serialNumber = 1;
+    var successCreateMessage = TempData["SuccessCreateMessage"] as string;
+    var successEditMessage = TempData["SuccessEditMessage"] as string;
+    var successDeleteMessage = TempData["SuccessDeleteMessage"] as string;
+}
+
+<div class="container-fluid pt-4 px-4 bg-dark">
+
+<h1>
+    <a asp-action="Create" style="font-weight:bolder; color:gray;">Add New Employee</a>
+</h1>
+    @if (!string.IsNullOrEmpty(successCreateMessage))
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert" style="background-color: gray; color: white; border: 2px solid #FF5733">
+            <strong>@successCreateMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+    else if (!string.IsNullOrEmpty(successEditMessage))
+{
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="background-color: gray; color: white; border: 2px solid #FF5733">
+                <strong>@successEditMessage</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+}
+    else if (!string.IsNullOrEmpty(successDeleteMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="background-color: gray; color: white; border: 2px solid #FF5733">
+            <strong>@successDeleteMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+<table class="table datatable text-center py-3">
+    <thead>
+        <tr>
+                <th>S.No</th>
+                <th>
+                    Employee Code
+                </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Contact
+            </th>
+                <th>
+                    Designation
+                </th>
+           
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+{
+@foreach (var item in Model) {
+        <tr>
+                        <td>@serialNumber</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.Contact)
+            </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Designation)
+                        </td>
+           
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" style="color:#FF5733;">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" style="color:#FF5733;">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" style="color:#FF5733;">Delete</a>
+            </td>
+        </tr>
+                    serialNumber++;
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="text-center">No Employee Found</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

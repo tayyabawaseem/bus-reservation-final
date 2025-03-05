@@ -1,0 +1,292 @@
+﻿@model bus_reservation.Models.BookingViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Print Ticket";
+    string userRole = User.FindFirstValue(ClaimTypes.Role); // Get the role from the logged-in user's claims
+
+    if (userRole == "Admin")
+    {
+        Layout = "~/Views/Shared/AdminLayout.cshtml";
+    }
+    else if (userRole == "Employee")
+    {
+        Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+    }
+    else
+    {
+        Layout = null; // Default or no layout
+    }
+}
+
+<div class="container my-2 p-4 bg-dark">
+    <div class="bg-dark rounded h-100 p-4">
+    <div class="d-flex justify-content-center">
+
+
+            <button id="generatePdfButton" class="btn btn-outline-success mx-auto" style="width:auto;background-color: gray; color: white; border: 2px solid #FF5733
+                    ">
+                Print Ticket
+            </button>
+    </div>
+    <hr />
+    <div id="elementID" class="m-4">
+
+    
+<div class="ticket-container">
+    
+    <div class="ticket-header">
+        <div class="logo-ticket">
+            <img src="~/images/logo.png" alt="Company Logo" style="width:250px; height:100% !important;" />
+        </div>
+    </div>
+
+    <div class="ticket-details">
+        <h2 style="font-weight:bolder; color:gray">Ticket Details</h2>
+            <div class="row my-4">
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-2">
+                                        <p><strong>Name:</strong></p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-10">
+                                        <p>@Model.CustomerName</p>
+                                    </div>
+                                </div>
+                    </div>
+                        <div class="col-sm-12 col-xl-12 mb-3">
+                          
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-2">
+                                        <p><strong>Email:</strong></p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-10">
+                                        <p>@Model.CustomerEmail</p>
+                                    </div>
+                                </div>
+                           
+                   
+                </div>
+                    <div class="col-sm-12 col-xl-12 mb-3">
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-6">
+                                        <p><strong>Age:</strong></p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <p>@Model.CustomerAge</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-6">
+                                        <p><strong>Contact:</strong></p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <p>@Model.CustomerContact</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-12 mb-3">
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-6">
+                                        <p><strong>Bus Number:</strong></p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <p>@Model.BusCode</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-6">
+                                        <p><strong>Bus Type:</strong></p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <p>@Model.BusTypeName</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-12 mb-3">
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-6">
+                                        <p><strong>Seat Number:</strong></p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <p>@Model.SeatNumber</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-6">
+                                        <p><strong>Route:</strong></p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <p>@Model.RouteName (@Model.StartingPlace - @Model.DestinationPlace)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-12 mb-3">
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-6">
+                                        <p><strong>Distance:</strong></p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <p>@Model.Distance</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-6">
+                                        <p><strong>Fare:</strong></p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <p>@Model.Fare</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-12 mb-3 ticket-policy">
+                       <h2 style="font-weight:bolder;color:gray;">Ticket Cancellation Policy</h2>
+                       <ul>
+                            <li>
+                                If cancelled before 2 days then the
+                                whole money will be returned.
+                            </li>
+                            <li>
+                                If cancelled one day before, then 15% is debited from the
+                                total amount and the remaining amount is returned.
+                            </li>
+                            <li>
+                                If cancelled on that day, then 30% is debited from the
+                                total amount and the remaining amount is returned.
+                            </li>
+                       </ul>
+                    </div>
+            </div>
+       
+    </div>
+
+
+    
+</div>
+        </div>
+</div>
+</div>
+
+<style>
+    .ticket-container {
+        width: 100%;
+        max-width: 800px;
+        height: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        border: 4px solid  #FF5733;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: white; /* Ensure a white background */
+        
+    }
+    .ticket-policy{
+        margin-top: 230px;
+    }
+
+
+    .ticket-header {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px; /* Add margin to separate header from details */
+    }
+
+        .ticket-header img {
+            max-width: 100%; /* Responsive logo */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 20px;
+        }
+
+    .ticket-details {
+        margin-top: 20px;
+    }
+
+    .ticket-details h2{
+            color: #0e9e4d;
+            ;
+
+            text-align: center;
+            font-size: 2rem;
+            margin-top: 40px;
+    }
+
+    .ticket-details p{
+        margin-bottom: 0px !important;
+    }
+
+        .ticket-details p strong{
+                color: #FF5733 !important;
+        }
+        li::marker{
+        color: #FF5733 !important;
+        }
+   
+
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.3/html2pdf.bundle.min.js"></script>
+<script>
+    window.onload = function () {
+        document.getElementById("generatePdfButton").addEventListener("click", function () {
+            var button = event.target;
+            setTimeout(function () {
+                button.disabled = true;
+                button.innerHTML = "Downloading...";
+            }, 10);
+
+            var element = document.getElementById("elementID"); // Replace 'elementID' with the ID of the element you want to print
+            var options = {
+                filename: "ticket.pdf",
+                margin: 0,
+                html2canvas: {
+                    scale: 2, // Adjust the scale value for improved resolution
+                    // To ensure US letter size (8.5x11 inches) resolution
+                    letterRendering: true,
+                    useCORS: true
+                },
+                jsPDF: {
+                    unit: "in", // Set the unit to inches
+                    format: "letter", // Set the format to US letter size
+                    orientation: "portrait",
+                },
+            };
+
+            html2pdf().from(element).set(options).save().then(function () {
+                // Re-enable the button and restore its content
+                button.disabled = false;
+                button.innerHTML = "Downloaded";
+            }).catch(function (error) {
+                console.error(error);
+                // Re-enable the button and restore its content
+                button.disabled = false;
+                button.innerHTML = "Download";
+            });
+        });
+    }
+
+</script>

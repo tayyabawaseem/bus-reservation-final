@@ -1,0 +1,172 @@
+﻿@model bus_reservation.Models.BookingViewModel
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Ticket Details";
+    string userRole = User.FindFirstValue(ClaimTypes.Role); // Get the role from the logged-in user's claims
+
+    if (userRole == "Admin")
+    {
+        Layout = "~/Views/Shared/AdminLayout.cshtml";
+    }
+    else if (userRole == "Employee")
+    {
+        Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+    }
+    else
+    {
+        Layout = null; // Default or no layout
+    }
+}
+
+<style>
+    dt, h2{
+        color: #FF5733
+        !important;
+    }
+    h2{
+        margin: 20px 0;
+    }
+</style>
+<div class="container-fluid pt-4 px-4 bg-dark">
+<h1 style="font-weight:bolder; color:gray;">Booking Details</h1>
+    @* <h4>Booking</h4> *@
+    <hr />
+    <div class="row g-4 my-2">
+        <div class="bg-dark rounded h-100 p-4">
+<div>
+    
+    <dl class="row">
+        <div class="text-center">
+            <h2>Booking Details</h2>
+        </div>
+        <dt class="col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.BookingDate)
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @String.Format("{0:dd/MM/yyyy hh:mm tt}", Model.BookingDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SeatNumber)
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.SeatNumber)
+        </dd>
+        <dt class="col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.Fare)
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.Fare)
+        </dd>
+        @if (Model.StatusBooking == "Cancelled")
+        {
+            <dt class="col-sm-2 text-light">
+                @Html.DisplayNameFor(model => model.RefundAmount)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.RefundAmount)
+            </dd>
+        }
+        <dt class="col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.StatusBooking)
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.StatusBooking)
+        </dd>
+        <dt class="col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.Arrivaltime)
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @String.Format("{0:dd/MM/yyyy hh:mm tt}", Model.Arrivaltime)
+        </dd>
+        <dt class="col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.Departuretime)
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @String.Format("{0:dd/MM/yyyy hh:mm tt}", Model.Departuretime)
+        </dd>
+        <div class="text-center">
+            <h2>Bus Details</h2>
+        </div>
+        <dt class="col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.BusCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BusCode)
+        </dd>
+        <dt class="col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.BusTypeName)
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.BusTypeName)
+        </dd>
+        <dt class="col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.RouteName)
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.RouteName)
+        </dd>
+        <dt class="col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.StartingPlace)
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.StartingPlace)
+        </dd>
+        <dt class="col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.DestinationPlace)
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.DestinationPlace)
+        </dd>
+        <dt class="col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.Distance)
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.Distance)
+        </dd>
+        <div class="text-center">
+            <h2>Customer Details</h2>
+        </div>
+        <dt class = "col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+        <dd class = "col-sm-10 text-light">
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+        <dt class = "col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.CustomerAge)
+        </dt>
+        <dd class = "col-sm-10 text-light">
+            @Html.DisplayFor(model => model.CustomerAge)
+        </dd>
+        <dt class = "col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.CustomerContact)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustomerContact)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerEmail)
+        </dt>
+        <dd class = "col-sm-10 text-light">
+            @Html.DisplayFor(model => model.CustomerEmail)
+        </dd>
+        <div class="text-center">
+            <h2>Booking Managed By</h2>
+        </div>
+        <dt class="col-sm-2 text-light">
+            @Html.DisplayNameFor(model => model.BookingManagedBy)
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.BookingManagedBy)
+        </dd>
+   
+    </dl>
+</div>
+<div class="mt-3">
+                <a class="btn btn-outline-success" asp-action="Index" style="background-color: dimgrey;font-weight:bolder; color: whitesmoke; border-radius:10px; border: 3px solid; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+                   onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+                   onmouseout="this.style.backgroundColor='dimgrey'; this.style.color='Whitesmoke';">Back to List</a> <br /> <br />
+            </div>
+        </div>
+    </div>
+</div>

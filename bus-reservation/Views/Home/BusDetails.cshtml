@@ -1,0 +1,1555 @@
+﻿
+@{
+    ViewData["Title"] = "BusDetails";
+}
+
+
+
+
+@* <h1>busdetail</h1> *@
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="profile" href="https://gmpg.org/xfn/11" />
+	<link rel="pingback" href="~/user/assests/xmlrpc.html" />
+	<title>Bus Detail &#8211; Shuttle</title>
+	<meta name='robots' content='max-image-preview:large' />
+	<link rel="alternate" type="application/rss+xml" title="Shuttle &raquo; Feed" href="~/user/assests/feed/index.html" />
+	<link rel="alternate" type="application/rss+xml" title="Shuttle &raquo; Comments Feed" href="~/user/assests/comments/feed/index.html" />
+	<script>
+		window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/templatekit.jegtheme.com\/shuttle\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.1"}};
+		/*! This file is auto-generated */
+		!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff","\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+	</script>
+	<link rel='stylesheet' id='jkit-elements-main-css' href='~/user/assests/wp-content/plugins/jeg-elementor-kit/assets/css/elements/main61da.css?ver=2.6.2' media='all' />
+	<style id='wp-emoji-styles-inline-css'>
+
+		img.wp-smiley, img.emoji {
+			display: inline !important;
+			border: none !important;
+			box-shadow: none !important;
+			height: 1em !important;
+			width: 1em !important;
+			margin: 0 0.07em !important;
+			vertical-align: -0.1em !important;
+			background: none !important;
+			padding: 0 !important;
+		}
+	</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='~/user/assests/wp-includes/css/dist/block-library/style.minaec2.css?ver=6.4.1' media='all' />
+	<style id='classic-theme-styles-inline-css'>
+		/*! This file is auto-generated */
+		.wp-block-button__link {
+			color: #fff;
+			background-color: #32373c;
+			border-radius: 9999px;
+			box-shadow: none;
+			text-decoration: none;
+			padding: calc(.667em + 2px) calc(1.333em + 2px);
+			font-size: 1.125em
+		}
+
+		.wp-block-file__button {
+			background: #32373c;
+			color: #fff;
+			text-decoration: none
+		}
+	</style>
+	<style id='global-styles-inline-css'>
+		body {
+			--wp--preset--color--black: #000000;
+			--wp--preset--color--cyan-bluish-gray: #abb8c3;
+			--wp--preset--color--white: #ffffff;
+			--wp--preset--color--pale-pink: #f78da7;
+			--wp--preset--color--vivid-red: #cf2e2e;
+			--wp--preset--color--luminous-vivid-orange: #ff6900;
+			--wp--preset--color--luminous-vivid-amber: #fcb900;
+			--wp--preset--color--light-green-cyan: #7bdcb5;
+			--wp--preset--color--vivid-green-cyan: #00d084;
+			--wp--preset--color--pale-cyan-blue: #8ed1fc;
+			--wp--preset--color--vivid-cyan-blue: #0693e3;
+			--wp--preset--color--vivid-purple: #9b51e0;
+			--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);
+			--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);
+			--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);
+			--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);
+			--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);
+			--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);
+			--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);
+			--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);
+			--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);
+			--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);
+			--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);
+			--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);
+			--wp--preset--font-size--small: 13px;
+			--wp--preset--font-size--medium: 20px;
+			--wp--preset--font-size--large: 36px;
+			--wp--preset--font-size--x-large: 42px;
+			--wp--preset--spacing--20: 0.44rem;
+			--wp--preset--spacing--30: 0.67rem;
+			--wp--preset--spacing--40: 1rem;
+			--wp--preset--spacing--50: 1.5rem;
+			--wp--preset--spacing--60: 2.25rem;
+			--wp--preset--spacing--70: 3.38rem;
+			--wp--preset--spacing--80: 5.06rem;
+			--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+			--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);
+			--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);
+			--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);
+			--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);
+		}
+
+		:where(.is-layout-flex) {
+			gap: 0.5em;
+		}
+
+		:where(.is-layout-grid) {
+			gap: 0.5em;
+		}
+
+		body .is-layout-flow > .alignleft {
+			float: left;
+			margin-inline-start: 0;
+			margin-inline-end: 2em;
+		}
+
+		body .is-layout-flow > .alignright {
+			float: right;
+			margin-inline-start: 2em;
+			margin-inline-end: 0;
+		}
+
+		body .is-layout-flow > .aligncenter {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+
+		body .is-layout-constrained > .alignleft {
+			float: left;
+			margin-inline-start: 0;
+			margin-inline-end: 2em;
+		}
+
+		body .is-layout-constrained > .alignright {
+			float: right;
+			margin-inline-start: 2em;
+			margin-inline-end: 0;
+		}
+
+		body .is-layout-constrained > .aligncenter {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+
+		body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+			max-width: var(--wp--style--global--content-size);
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+
+		body .is-layout-constrained > .alignwide {
+			max-width: var(--wp--style--global--wide-size);
+		}
+
+		body .is-layout-flex {
+			display: flex;
+		}
+
+		body .is-layout-flex {
+			flex-wrap: wrap;
+			align-items: center;
+		}
+
+			body .is-layout-flex > * {
+				margin: 0;
+			}
+
+		body .is-layout-grid {
+			display: grid;
+		}
+
+			body .is-layout-grid > * {
+				margin: 0;
+			}
+
+		:where(.wp-block-columns.is-layout-flex) {
+			gap: 2em;
+		}
+
+		:where(.wp-block-columns.is-layout-grid) {
+			gap: 2em;
+		}
+
+		:where(.wp-block-post-template.is-layout-flex) {
+			gap: 1.25em;
+		}
+
+		:where(.wp-block-post-template.is-layout-grid) {
+			gap: 1.25em;
+		}
+
+		.has-black-color {
+			color: var(--wp--preset--color--black) !important;
+		}
+
+		.has-cyan-bluish-gray-color {
+			color: var(--wp--preset--color--cyan-bluish-gray) !important;
+		}
+
+		.has-white-color {
+			color: var(--wp--preset--color--white) !important;
+		}
+
+		.has-pale-pink-color {
+			color: var(--wp--preset--color--pale-pink) !important;
+		}
+
+		.has-vivid-red-color {
+			color: var(--wp--preset--color--vivid-red) !important;
+		}
+
+		.has-luminous-vivid-orange-color {
+			color: var(--wp--preset--color--luminous-vivid-orange) !important;
+		}
+
+		.has-luminous-vivid-amber-color {
+			color: var(--wp--preset--color--luminous-vivid-amber) !important;
+		}
+
+		.has-light-green-cyan-color {
+			color: var(--wp--preset--color--light-green-cyan) !important;
+		}
+
+		.has-vivid-green-cyan-color {
+			color: var(--wp--preset--color--vivid-green-cyan) !important;
+		}
+
+		.has-pale-cyan-blue-color {
+			color: var(--wp--preset--color--pale-cyan-blue) !important;
+		}
+
+		.has-vivid-cyan-blue-color {
+			color: var(--wp--preset--color--vivid-cyan-blue) !important;
+		}
+
+		.has-vivid-purple-color {
+			color: var(--wp--preset--color--vivid-purple) !important;
+		}
+
+		.has-black-background-color {
+			background-color: var(--wp--preset--color--black) !important;
+		}
+
+		.has-cyan-bluish-gray-background-color {
+			background-color: var(--wp--preset--color--cyan-bluish-gray) !important;
+		}
+
+		.has-white-background-color {
+			background-color: var(--wp--preset--color--white) !important;
+		}
+
+		.has-pale-pink-background-color {
+			background-color: var(--wp--preset--color--pale-pink) !important;
+		}
+
+		.has-vivid-red-background-color {
+			background-color: var(--wp--preset--color--vivid-red) !important;
+		}
+
+		.has-luminous-vivid-orange-background-color {
+			background-color: var(--wp--preset--color--luminous-vivid-orange) !important;
+		}
+
+		.has-luminous-vivid-amber-background-color {
+			background-color: var(--wp--preset--color--luminous-vivid-amber) !important;
+		}
+
+		.has-light-green-cyan-background-color {
+			background-color: var(--wp--preset--color--light-green-cyan) !important;
+		}
+
+		.has-vivid-green-cyan-background-color {
+			background-color: var(--wp--preset--color--vivid-green-cyan) !important;
+		}
+
+		.has-pale-cyan-blue-background-color {
+			background-color: var(--wp--preset--color--pale-cyan-blue) !important;
+		}
+
+		.has-vivid-cyan-blue-background-color {
+			background-color: var(--wp--preset--color--vivid-cyan-blue) !important;
+		}
+
+		.has-vivid-purple-background-color {
+			background-color: var(--wp--preset--color--vivid-purple) !important;
+		}
+
+		.has-black-border-color {
+			border-color: var(--wp--preset--color--black) !important;
+		}
+
+		.has-cyan-bluish-gray-border-color {
+			border-color: var(--wp--preset--color--cyan-bluish-gray) !important;
+		}
+
+		.has-white-border-color {
+			border-color: var(--wp--preset--color--white) !important;
+		}
+
+		.has-pale-pink-border-color {
+			border-color: var(--wp--preset--color--pale-pink) !important;
+		}
+
+		.has-vivid-red-border-color {
+			border-color: var(--wp--preset--color--vivid-red) !important;
+		}
+
+		.has-luminous-vivid-orange-border-color {
+			border-color: var(--wp--preset--color--luminous-vivid-orange) !important;
+		}
+
+		.has-luminous-vivid-amber-border-color {
+			border-color: var(--wp--preset--color--luminous-vivid-amber) !important;
+		}
+
+		.has-light-green-cyan-border-color {
+			border-color: var(--wp--preset--color--light-green-cyan) !important;
+		}
+
+		.has-vivid-green-cyan-border-color {
+			border-color: var(--wp--preset--color--vivid-green-cyan) !important;
+		}
+
+		.has-pale-cyan-blue-border-color {
+			border-color: var(--wp--preset--color--pale-cyan-blue) !important;
+		}
+
+		.has-vivid-cyan-blue-border-color {
+			border-color: var(--wp--preset--color--vivid-cyan-blue) !important;
+		}
+
+		.has-vivid-purple-border-color {
+			border-color: var(--wp--preset--color--vivid-purple) !important;
+		}
+
+		.has-vivid-cyan-blue-to-vivid-purple-gradient-background {
+			background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;
+		}
+
+		.has-light-green-cyan-to-vivid-green-cyan-gradient-background {
+			background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;
+		}
+
+		.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background {
+			background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;
+		}
+
+		.has-luminous-vivid-orange-to-vivid-red-gradient-background {
+			background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;
+		}
+
+		.has-very-light-gray-to-cyan-bluish-gray-gradient-background {
+			background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;
+		}
+
+		.has-cool-to-warm-spectrum-gradient-background {
+			background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;
+		}
+
+		.has-blush-light-purple-gradient-background {
+			background: var(--wp--preset--gradient--blush-light-purple) !important;
+		}
+
+		.has-blush-bordeaux-gradient-background {
+			background: var(--wp--preset--gradient--blush-bordeaux) !important;
+		}
+
+		.has-luminous-dusk-gradient-background {
+			background: var(--wp--preset--gradient--luminous-dusk) !important;
+		}
+
+		.has-pale-ocean-gradient-background {
+			background: var(--wp--preset--gradient--pale-ocean) !important;
+		}
+
+		.has-electric-grass-gradient-background {
+			background: var(--wp--preset--gradient--electric-grass) !important;
+		}
+
+		.has-midnight-gradient-background {
+			background: var(--wp--preset--gradient--midnight) !important;
+		}
+
+		.has-small-font-size {
+			font-size: var(--wp--preset--font-size--small) !important;
+		}
+
+		.has-medium-font-size {
+			font-size: var(--wp--preset--font-size--medium) !important;
+		}
+
+		.has-large-font-size {
+			font-size: var(--wp--preset--font-size--large) !important;
+		}
+
+		.has-x-large-font-size {
+			font-size: var(--wp--preset--font-size--x-large) !important;
+		}
+
+		.wp-block-navigation a:where(:not(.wp-element-button)) {
+			color: inherit;
+		}
+
+		:where(.wp-block-post-template.is-layout-flex) {
+			gap: 1.25em;
+		}
+
+		:where(.wp-block-post-template.is-layout-grid) {
+			gap: 1.25em;
+		}
+
+		:where(.wp-block-columns.is-layout-flex) {
+			gap: 2em;
+		}
+
+		:where(.wp-block-columns.is-layout-grid) {
+			gap: 2em;
+		}
+
+		.wp-block-pullquote {
+			font-size: 1.5em;
+			line-height: 1.6;
+		}
+	</style>
+	<link rel='stylesheet' id='allow-webp-image-css' href='~/user/assests/wp-content/plugins/allow-webp-image/public/css/allow-webp-image-publicf269.css?ver=1.0.1' media='all' />
+	<link rel='stylesheet' id='template-kit-export-css' href='~/user/assests/wp-content/plugins/template-kit-export/public/assets/css/template-kit-export-public.min365c.css?ver=1.0.21' media='all' />
+	<link rel='stylesheet' id='elementor-icons-css' href='~/user/assests/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min192d.css?ver=5.23.0' media='all' />
+	<link rel='stylesheet' id='elementor-frontend-css' href='~/user/assests/wp-content/plugins/elementor/assets/css/frontend-lite.min8864.css?ver=3.17.3' media='all' />
+	<link rel='stylesheet' id='swiper-css' href='~/user/assests/wp-content/plugins/elementor/assets/lib/swiper/css/swiper.min48f5.css?ver=5.3.6' media='all' />
+	<link rel='stylesheet' id='elementor-post-3-css' href='~/user/assests/wp-content/uploads/sites/300/elementor/css/post-366c6.css?ver=1700559615' media='all' />
+	<link rel='stylesheet' id='elementor-global-css' href='~/user/assests/wp-content/uploads/sites/300/elementor/css/global50ca.css?ver=1700559605' media='all' />
+	<link rel='stylesheet' id='elementor-post-330-css' href='~/user/assests/wp-content/uploads/sites/300/elementor/css/post-330dff6.css?ver=1700571174' media='all' />
+	<link rel='stylesheet' id='font-awesome-5-all-css' href='~/user/assests/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min8864.css?ver=3.17.3' media='all' />
+	<link rel='stylesheet' id='font-awesome-4-shim-css' href='~/user/assests/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min8864.css?ver=3.17.3' media='all' />
+	<link rel='stylesheet' id='text-editor-style-css' href='~/user/assests/wp-content/plugins/metform/public/assets/css/text-editor9e95.css?ver=3.8.0' media='all' />
+	<link rel='stylesheet' id='hello-elementor-css' href='~/user/assests/wp-content/themes/hello-elementor/style.minc141.css?ver=2.6.1' media='all' />
+	<link rel='stylesheet' id='hello-elementor-theme-style-css' href='~/user/assests/wp-content/themes/hello-elementor/theme.minc141.css?ver=2.6.1' media='all' />
+	<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Barlow%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CHeebo%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&amp;display=auto&amp;ver=6.4.1' media='all' />
+	<link rel='stylesheet' id='elementor-icons-jkiticon-css' href='~/user/assests/wp-content/plugins/jeg-elementor-kit/assets/fonts/jkiticon/jkiticon61da.css?ver=2.6.2' media='all' />
+	<link rel='stylesheet' id='elementor-icons-shared-0-css' href='~/user/assests/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min52d5.css?ver=5.15.3' media='all' />
+	<link rel='stylesheet' id='elementor-icons-fa-solid-css' href='~/user/assests/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min52d5.css?ver=5.15.3' media='all' />
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<script src="~/user/assests/wp-includes/js/jquery/jquery.minf43b.js?ver=3.7.1" id="jquery-core-js"></script>
+	<script src="~/user/assests/wp-includes/js/jquery/jquery-migrate.min5589.js?ver=3.4.1" id="jquery-migrate-js"></script>
+	<script src="~/user/assests/wp-content/plugins/allow-webp-image/public/js/allow-webp-image-publicf269.js?ver=1.0.1" id="allow-webp-image-js"></script>
+	<script src="~/user/assests/wp-content/plugins/template-kit-export/public/assets/js/template-kit-export-public.min365c.js?ver=1.0.21" id="template-kit-export-js"></script>
+	<script src="~/user/assests/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min8864.js?ver=3.17.3" id="font-awesome-4-shim-js"></script>
+	<link rel="https://api.w.org/" href="~/user/assests/wp-json/index.html" />
+	<link rel="alternate" type="application/json" href="../wp-json/wp/v2/pages/330.json" />
+	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.html?rsd" />
+	<meta name="generator" content="WordPress 6.4.1" />
+	<link rel="canonical" href="index.html" />
+	<link rel='shortlink' href='~/user/assests/index1639.html?p=330' />
+	<link rel="alternate" type="application/json+oembed" href="~/user/assests/wp-json/oembed/1.0/embed0a08.json?url=https%3A%2F%2Ftemplatekit.jegtheme.com%2Fshuttle%2Fbus-detail%2F" />
+	<link rel="alternate" type="text/xml+oembed" href="~/user/assests/wp-json/oembed/1.0/embedc6aa?url=https%3A%2F%2Ftemplatekit.jegtheme.com%2Fshuttle%2Fbus-detail%2F&amp;format=xml" />
+	<meta name="generator" content="Elementor 3.17.3; features: e_dom_optimization, e_optimized_assets_loading, e_optimized_css_loading, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-auto">
+</head>
+
+<body class="page-template page-template-elementor_header_footer page page-id-330 jkit-color-scheme elementor-default elementor-template-full-width elementor-kit-3 elementor-page elementor-page-330">
+	<div id="page" class="jkit-template  site">
+
+
+		<div data-elementor-type="wp-page" data-elementor-id="330" class="elementor elementor-330">
+			<section class="elementor-section elementor-top-section elementor-element elementor-element-e48ea6e elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e48ea6e" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-background-overlay"></div>
+				<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4408b94" data-id="4408b94" data-element_type="column">
+						<div class="elementor-widget-wrap elementor-element-populated">
+							<div class="elementor-element elementor-element-5da0a5f elementor-widget elementor-widget-heading" data-id="5da0a5f" data-element_type="widget" data-widget_type="heading.default">
+								<div class="elementor-widget-container">
+									<style>
+										/*! elementor - v3.17.0 - 08-11-2023 */
+										.elementor-heading-title {
+											padding: 0;
+											margin: 0;
+											line-height: 1
+										}
+
+										.elementor-widget-heading .elementor-heading-title[class*=elementor-size-] > a {
+											color: inherit;
+											font-size: inherit;
+											line-height: inherit
+										}
+
+										.elementor-widget-heading .elementor-heading-title.elementor-size-small {
+											font-size: 15px
+										}
+
+										.elementor-widget-heading .elementor-heading-title.elementor-size-medium {
+											font-size: 19px
+										}
+
+										.elementor-widget-heading .elementor-heading-title.elementor-size-large {
+											font-size: 29px
+										}
+
+										.elementor-widget-heading .elementor-heading-title.elementor-size-xl {
+											font-size: 39px
+										}
+
+										.elementor-widget-heading .elementor-heading-title.elementor-size-xxl {
+											font-size: 59px
+										}</style><h2 class="elementor-heading-title elementor-size-default">Bus Detail</h2>
+								</div>
+							</div>
+							<div class="elementor-element elementor-element-f4078cc elementor-widget elementor-widget-text-editor" data-id="f4078cc" data-element_type="widget" data-widget_type="text-editor.default">
+								<div class="elementor-widget-container">
+									<style>
+										/*! elementor - v3.17.0 - 08-11-2023 */
+										.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+											background-color: #69727d;
+											color: #fff
+										}
+
+										.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap {
+											color: #69727d;
+											border: 3px solid;
+											background-color: transparent
+										}
+
+										.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap {
+											margin-top: 8px
+										}
+
+										.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap-letter {
+											width: 1em;
+											height: 1em
+										}
+
+										.elementor-widget-text-editor .elementor-drop-cap {
+											float: left;
+											text-align: center;
+											line-height: 1;
+											font-size: 50px
+										}
+
+										.elementor-widget-text-editor .elementor-drop-cap-letter {
+											display: inline-block
+										}</style>				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-9b3ebda" data-id="9b3ebda" data-element_type="column">
+						<div class="elementor-widget-wrap elementor-element-populated">
+							<div class="elementor-element elementor-element-ec386b0 elementor-icon-list--layout-inline elementor-align-right elementor-mobile-align-center elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="ec386b0" data-element_type="widget" data-widget_type="icon-list.default">
+								<div class="elementor-widget-container">
+									<link rel="stylesheet" href="~/user/assests/wp-content/plugins/elementor/assets/css/widget-icon-list.min.css">		<ul class="elementor-icon-list-items elementor-inline-items">
+										<li class="elementor-icon-list-item elementor-inline-item">
+											<span class="elementor-icon-list-text">Home</span>
+										</li>
+										<li class="elementor-icon-list-item elementor-inline-item">
+											<span class="elementor-icon-list-icon">
+												<i aria-hidden="true" class="jki jki-chevrons-right-line"></i>
+											</span>
+											<span class="elementor-icon-list-text">Bus Detail</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="elementor-section elementor-top-section elementor-element elementor-element-b40a1b7 elementor-reverse-tablet elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="b40a1b7" data-element_type="section">
+				<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-becf5bf" data-id="becf5bf" data-element_type="column">
+						<div class="elementor-widget-wrap elementor-element-populated">
+							<section class="elementor-section elementor-inner-section elementor-element elementor-element-c4cc999 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="c4cc999" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+								<div class="elementor-background-overlay"></div>
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-3342fe9" data-id="3342fe9" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-18a16fd elementor-widget elementor-widget-heading" data-id="18a16fd" data-element_type="widget" data-widget_type="heading.default">
+												<div class="elementor-widget-container">
+													<h3 class="elementor-heading-title elementor-size-default">Discount Offer</h3>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-8147755 elementor-widget elementor-widget-heading" data-id="8147755" data-element_type="widget" data-widget_type="heading.default">
+												<div class="elementor-widget-container">
+													<h2 class="elementor-heading-title elementor-size-default">50%  OFF</h2>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-978dec1 elementor-widget elementor-widget-heading" data-id="978dec1" data-element_type="widget" data-widget_type="heading.default">
+												<div class="elementor-widget-container">
+													<h3 class="elementor-heading-title elementor-size-default">For All Types Of Vehicles</h3>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-2062666 elementor-widget elementor-widget-text-editor" data-id="2062666" data-element_type="widget" data-widget_type="text-editor.default">
+												<div class="elementor-widget-container">
+													* New Customers Only
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section class="elementor-section elementor-inner-section elementor-element elementor-element-c8b630f elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="c8b630f" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-7358033" data-id="7358033" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-96e9665 elementor-widget elementor-widget-heading" data-id="96e9665" data-element_type="widget" data-widget_type="heading.default">
+												<div class="elementor-widget-container">
+													<h3 class="elementor-heading-title elementor-size-default">Contact Booking</h3>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-8ebb76d elementor-widget elementor-widget-text-editor" data-id="8ebb76d" data-element_type="widget" data-widget_type="text-editor.default">
+												<div class="elementor-widget-container">
+													Lorem ipsum dolor sit amet cons adipiscing elit dolore magna
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-7e1c3ac jkit-equal-height-disable elementor-widget elementor-widget-jkit_icon_box" data-id="7e1c3ac" data-element_type="widget" data-widget_type="jkit_icon_box.default">
+												<div class="elementor-widget-container">
+													<div class="jeg-elementor-kit jkit-icon-box icon-position-left elementor-animation- jeg_module_330_2_67ae3b8b97966">
+														<div class="jkit-icon-box-wrapper hover-from-left">
+															<div class="icon-box icon-box-header elementor-animation-"><div class="icon style-color"><i aria-hidden="true" class="fas fa-phone-alt"></i></div></div><div class="icon-box icon-box-body">
+																<h4 class="title">Denpasar</h4><p class="icon-box-description">+923-3223162677</p>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-239be1a jkit-equal-height-disable elementor-widget elementor-widget-jkit_icon_box" data-id="239be1a" data-element_type="widget" data-widget_type="jkit_icon_box.default">
+												<div class="elementor-widget-container">
+													<div class="jeg-elementor-kit jkit-icon-box icon-position-left elementor-animation- jeg_module_330_3_67ae3b8b998b8">
+														<div class="jkit-icon-box-wrapper hover-from-left">
+															<div class="icon-box icon-box-header elementor-animation-"><div class="icon style-color"><i aria-hidden="true" class="fas fa-phone-alt"></i></div></div><div class="icon-box icon-box-body">
+																<h4 class="title">Badung</h4><p class="icon-box-description">+923-3223162677</p>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+					</div>
+					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-7540525" data-id="7540525" data-element_type="column">
+						<div class="elementor-widget-wrap elementor-element-populated">
+							<div class="elementor-element elementor-element-8a48dd2 elementor-widget elementor-widget-image" data-id="8a48dd2" data-element_type="widget" data-widget_type="image.default">
+								<div class="elementor-widget-container">
+									<img decoding="async" width="800" height="540" src="~/user/assests/wp-content/uploads/sites/300/2022/06/bus-image2-1024x691.jpg" class="attachment-large size-large wp-image-57" alt="" srcset="https://templatekit.jegtheme.com/shuttle/wp-content/uploads/sites/300/2022/06/bus-image2-1024x691.jpg 1024w, https://templatekit.jegtheme.com/shuttle/wp-content/uploads/sites/300/2022/06/bus-image2-300x203.jpg 300w, https://templatekit.jegtheme.com/shuttle/wp-content/uploads/sites/300/2022/06/bus-image2-768x518.jpg 768w, https://templatekit.jegtheme.com/shuttle/wp-content/uploads/sites/300/2022/06/bus-image2-1536x1037.jpg 1536w, https://templatekit.jegtheme.com/shuttle/wp-content/uploads/sites/300/2022/06/bus-image2-800x540.jpg 800w, https://templatekit.jegtheme.com/shuttle/wp-content/uploads/sites/300/2022/06/bus-image2.jpg 2000w" sizes="(max-width: 800px) 100vw, 800px" />
+								</div>
+							</div>
+							<section class="elementor-section elementor-inner-section elementor-element elementor-element-bf88812 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="bf88812" data-element_type="section">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-9a6563d" data-id="9a6563d" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-4e3132b elementor-widget elementor-widget-heading" data-id="4e3132b" data-element_type="widget" data-widget_type="heading.default">
+												<div class="elementor-widget-container">
+													<h4 class="elementor-heading-title elementor-size-default">Etiquette 101</h4>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-d9ba01f" data-id="d9ba01f" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-ff7713f elementor-widget elementor-widget-jkit_heading" data-id="ff7713f" data-element_type="widget" data-widget_type="jkit_heading.default">
+												<div class="elementor-widget-container">
+													<div class="jeg-elementor-kit jkit-heading  align-right align-tablet-right align-mobile- jeg_module_330_4_67ae3b8ba0b28"><div class="heading-section-title  display-inline-block"><h2 class="heading-title">$250<span class="style-color"><span>/day</span></span></h2></div></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<div class="elementor-element elementor-element-4750230 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="4750230" data-element_type="widget" data-widget_type="divider.default">
+								<div class="elementor-widget-container">
+									<style>
+										/*! elementor - v3.17.0 - 08-11-2023 */
+										.elementor-widget-divider {
+											--divider-border-style: none;
+											--divider-border-width: 1px;
+											--divider-color: #0c0d0e;
+											--divider-icon-size: 20px;
+											--divider-element-spacing: 10px;
+											--divider-pattern-height: 24px;
+											--divider-pattern-size: 20px;
+											--divider-pattern-url: none;
+											--divider-pattern-repeat: repeat-x
+										}
+
+											.elementor-widget-divider .elementor-divider {
+												display: flex
+											}
+
+											.elementor-widget-divider .elementor-divider__text {
+												font-size: 15px;
+												line-height: 1;
+												max-width: 95%
+											}
+
+											.elementor-widget-divider .elementor-divider__element {
+												margin: 0 var(--divider-element-spacing);
+												flex-shrink: 0
+											}
+
+											.elementor-widget-divider .elementor-icon {
+												font-size: var(--divider-icon-size)
+											}
+
+											.elementor-widget-divider .elementor-divider-separator {
+												display: flex;
+												margin: 0;
+												direction: ltr
+											}
+
+										.elementor-widget-divider--view-line_icon .elementor-divider-separator, .elementor-widget-divider--view-line_text .elementor-divider-separator {
+											align-items: center
+										}
+
+											.elementor-widget-divider--view-line_icon .elementor-divider-separator:after, .elementor-widget-divider--view-line_icon .elementor-divider-separator:before, .elementor-widget-divider--view-line_text .elementor-divider-separator:after, .elementor-widget-divider--view-line_text .elementor-divider-separator:before {
+												display: block;
+												content: "";
+												border-bottom: 0;
+												flex-grow: 1;
+												border-top: var(--divider-border-width) var(--divider-border-style) var(--divider-color)
+											}
+
+										.elementor-widget-divider--element-align-left .elementor-divider .elementor-divider-separator > .elementor-divider__svg:first-of-type {
+											flex-grow: 0;
+											flex-shrink: 100
+										}
+
+										.elementor-widget-divider--element-align-left .elementor-divider-separator:before {
+											content: none
+										}
+
+										.elementor-widget-divider--element-align-left .elementor-divider__element {
+											margin-left: 0
+										}
+
+										.elementor-widget-divider--element-align-right .elementor-divider .elementor-divider-separator > .elementor-divider__svg:last-of-type {
+											flex-grow: 0;
+											flex-shrink: 100
+										}
+
+										.elementor-widget-divider--element-align-right .elementor-divider-separator:after {
+											content: none
+										}
+
+										.elementor-widget-divider--element-align-right .elementor-divider__element {
+											margin-right: 0
+										}
+
+										.elementor-widget-divider:not(.elementor-widget-divider--view-line_text):not(.elementor-widget-divider--view-line_icon) .elementor-divider-separator {
+											border-top: var(--divider-border-width) var(--divider-border-style) var(--divider-color)
+										}
+
+										.elementor-widget-divider--separator-type-pattern {
+											--divider-border-style: none
+										}
+
+											.elementor-widget-divider--separator-type-pattern.elementor-widget-divider--view-line .elementor-divider-separator, .elementor-widget-divider--separator-type-pattern:not(.elementor-widget-divider--view-line) .elementor-divider-separator:after, .elementor-widget-divider--separator-type-pattern:not(.elementor-widget-divider--view-line) .elementor-divider-separator:before, .elementor-widget-divider--separator-type-pattern:not([class*=elementor-widget-divider--view]) .elementor-divider-separator {
+												width: 100%;
+												min-height: var(--divider-pattern-height);
+												-webkit-mask-size: var(--divider-pattern-size) 100%;
+												mask-size: var(--divider-pattern-size) 100%;
+												-webkit-mask-repeat: var(--divider-pattern-repeat);
+												mask-repeat: var(--divider-pattern-repeat);
+												background-color: var(--divider-color);
+												-webkit-mask-image: var(--divider-pattern-url);
+												mask-image: var(--divider-pattern-url)
+											}
+
+										.elementor-widget-divider--no-spacing {
+											--divider-pattern-size: auto
+										}
+
+										.elementor-widget-divider--bg-round {
+											--divider-pattern-repeat: round
+										}
+
+										.rtl .elementor-widget-divider .elementor-divider__text {
+											direction: rtl
+										}
+
+										.e-con-inner > .elementor-widget-divider, .e-con > .elementor-widget-divider {
+											width: var(--container-widget-width,100%);
+											--flex-grow: var(--container-widget-flex-grow)
+										}</style>		<div class="elementor-divider">
+										<span class="elementor-divider-separator">
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="elementor-element elementor-element-dd6d011 elementor-widget elementor-widget-heading" data-id="dd6d011" data-element_type="widget" data-widget_type="heading.default">
+								<div class="elementor-widget-container">
+									<h3 class="elementor-heading-title elementor-size-default">Vehicle Facility</h3>
+								</div>
+							</div>
+							<section class="elementor-section elementor-inner-section elementor-element elementor-element-ddafc0e elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ddafc0e" data-element_type="section">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-992c0d3" data-id="992c0d3" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-2e558ad elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="2e558ad" data-element_type="widget" data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="jki jki-tv-solid"></i>
+															</span>
+															<span class="elementor-icon-list-text">Television</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="jki jki-toilet-solid"></i>
+															</span>
+															<span class="elementor-icon-list-text">Toilet</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-ea5e10b" data-id="ea5e10b" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-363247e elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="363247e" data-element_type="widget" data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="jki jki-plug-solid"></i>
+															</span>
+															<span class="elementor-icon-list-text">240V Socket</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="jki jki-music-solid"></i>
+															</span>
+															<span class="elementor-icon-list-text">Audio system</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-a00ebfb" data-id="a00ebfb" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-0ef50c0 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="0ef50c0" data-element_type="widget" data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="jki jki-wifi-solid"></i>
+															</span>
+															<span class="elementor-icon-list-text">Internet Connection</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="jki jki-snowflake-solid"></i>
+															</span>
+															<span class="elementor-icon-list-text">Full AC</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<div class="elementor-element elementor-element-0abadba elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="0abadba" data-element_type="widget" data-widget_type="divider.default">
+								<div class="elementor-widget-container">
+									<div class="elementor-divider">
+										<span class="elementor-divider-separator">
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="elementor-element elementor-element-d996c7c elementor-widget elementor-widget-heading" data-id="d996c7c" data-element_type="widget" data-widget_type="heading.default">
+								<div class="elementor-widget-container">
+									<h3 class="elementor-heading-title elementor-size-default">Vehicle Description</h3>
+								</div>
+							</div>
+							<section class="elementor-section elementor-inner-section elementor-element elementor-element-332d7bc elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="332d7bc" data-element_type="section">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-673acf7" data-id="673acf7" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-a2398f0 elementor-widget elementor-widget-text-editor" data-id="a2398f0" data-element_type="widget" data-widget_type="text-editor.default">
+												<div class="elementor-widget-container">
+													Lorem ipsum dolor sit amet, consectetur adipiscin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-eecd7a5" data-id="eecd7a5" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-6df1c24 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="6df1c24" data-element_type="widget" data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i>
+															</span>
+															<span class="elementor-icon-list-text">Quisque aliquet nibh sit amet lectus</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i>
+															</span>
+															<span class="elementor-icon-list-text">Nulla at metus ultricies, placerat augue</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i>
+															</span>
+															<span class="elementor-icon-list-text">Consectetur adipiscing elit sed do eiusmod</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i>
+															</span>
+															<span class="elementor-icon-list-text">Curabitur mollis ex vestibulum</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<div class="elementor-element elementor-element-94626c2 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="94626c2" data-element_type="widget" data-widget_type="divider.default">
+								<div class="elementor-widget-container">
+									<div class="elementor-divider">
+										<span class="elementor-divider-separator">
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="elementor-element elementor-element-02747bf elementor-widget elementor-widget-heading" data-id="02747bf" data-element_type="widget" data-widget_type="heading.default">
+								<div class="elementor-widget-container">
+									<h3 class="elementor-heading-title elementor-size-default">Additional information</h3>
+								</div>
+							</div>
+							<section class="elementor-section elementor-inner-section elementor-element elementor-element-7cfa9bd elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7cfa9bd" data-element_type="section">
+								<div class="elementor-container elementor-column-gap-default">
+									<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-0e40fce" data-id="0e40fce" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-98e73fd elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="98e73fd" data-element_type="widget" data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">Seats :</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">Length :</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">Width :</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">Height :</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">Fuel Type :</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-42213da" data-id="42213da" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-6d959f6 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="6d959f6" data-element_type="widget" data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">45</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">10.48 m</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">2.49 m</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">3.33 m</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">Diesel</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-4c0542c" data-id="4c0542c" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-30677e2 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="30677e2" data-element_type="widget" data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">Oil  Tank Capacity :</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">Engine Capacity :</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">Transmission :</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">Year :</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">Water Tank :</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-884c9fe" data-id="884c9fe" data-element_type="column">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-0723ff7 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="0723ff7" data-element_type="widget" data-widget_type="icon-list.default">
+												<div class="elementor-widget-container">
+													<ul class="elementor-icon-list-items">
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">260L</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text"> 4 - 6L</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">Manual</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">2018</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-text">50.0 gal</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<div class="elementor-element elementor-element-338c4f7 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="338c4f7" data-element_type="widget" data-widget_type="divider.default">
+								<div class="elementor-widget-container">
+									<div class="elementor-divider">
+										<span class="elementor-divider-separator">
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="elementor-element elementor-element-1c915e5 elementor-widget elementor-widget-heading" data-id="1c915e5" data-element_type="widget" data-widget_type="heading.default">
+								<div class="elementor-widget-container">
+									<h3 class="elementor-heading-title elementor-size-default">Booking Form</h3>
+								</div>
+							</div>
+							<section class="elementor-section elementor-inner-section elementor-element elementor-element-b335d93 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="b335d93" data-element_type="section">
+								<div class="elementor-container elementor-column-gap-no">
+									<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-6c20258" data-id="6c20258" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+										<div class="elementor-widget-wrap elementor-element-populated">
+											<div class="elementor-element elementor-element-87f636b elementor-widget elementor-widget-metform" data-id="87f636b" data-element_type="widget" data-widget_type="metform.default">
+												<div class="elementor-widget-container">
+													<div id="mf-response-props-id-434" data-previous-steps-style="" data-editswitchopen="" data-response_type="alert" data-erroricon="fas fa-exclamation-triangle" data-successicon="fas fa-check" data-messageposition="top" class="   mf-scroll-top-no">
+														<div class="formpicker_warper formpicker_warper_editable" data-metform-formpicker-key="434">
+
+															<div class="elementor-widget-container">
+
+																<div id="metform-wrap-87f636b-434"
+																	 class="mf-form-wrapper"
+																	 data-form-id="434"
+																	 data-action="https://templatekit.jegtheme.com/shuttle/wp-json/metform/v1/entries/insert/434"
+																	 data-wp-nonce="62ed1806bc"
+																	 data-form-nonce="3698d8a7cc"
+																	 data-quiz-summery="false"
+																	 data-save-progress="false"
+																	 data-form-type="contact_form"
+																	 data-stop-vertical-effect=""></div>
+
+
+																<!-----------------------------
+																	* controls_data : find the the props passed indie of data attribute
+																	* props.SubmitResponseMarkup : contains the markup of error or success message
+																	* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+																--------------------------- -->
+
+																<script type="text/mf" class="mf-template">
+																		function controls_data (value){
+																			let currentWrapper = "mf-response-props-id-434";
+																			let currentEl = document.getElementById(currentWrapper);
+
+																			return currentEl ? currentEl.dataset[value] : false
+																		}
+
+
+																		let is_edit_mode = '' ? true : false;
+																		let message_position = controls_data('messageposition') || 'top';
+
+
+																		let message_successIcon = controls_data('successicon') || '';
+																		let message_errorIcon = controls_data('erroricon') || '';
+																		let message_editSwitch = controls_data('editswitchopen') === 'yes' ? true : false;
+																		let message_proClass = controls_data('editswitchopen') === 'yes' ? 'mf_pro_activated' : '';
+
+																		let is_dummy_markup = is_edit_mode && message_editSwitch ? true : false;
+
+
+																		return html`
+																			<form
+																				className="metform-form-content"
+																				ref=${parent.formContainerRef}
+																				onSubmit=${ validation.handleSubmit( parent.handleFormSubmit ) }
+
+																				>
+
+
+																				${is_dummy_markup ? message_position === 'top' ?  props.ResponseDummyMarkup(message_successIcon, message_proClass) : '' : ''}
+																				${is_dummy_markup ? ' ' :  message_position === 'top' ? props.SubmitResponseMarkup`${parent}${state}${message_successIcon}${message_errorIcon}${message_proClass}` : ''}
+
+																				<!--------------------------------------------------------
+																				*** IMPORTANT / DANGEROUS ***
+																				${html``} must be used as in immediate child of "metform-form-main-wrapper"
+																				class otherwise multistep form will not run at all
+																				---------------------------------------------------------->
+
+																				<div className="metform-form-main-wrapper" key=${'hide-form-after-submit'} ref=${parent.formRef}>
+																				${html`
+																							<div data-elementor-type="wp-post" key="2" data-elementor-id="434" className="elementor elementor-434">
+																								<section className="elementor-section elementor-top-section elementor-element elementor-element-447d38a elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="447d38a" data-element_type="section">
+																					<div className="elementor-container elementor-column-gap-default">
+																				<div className="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-c095149" data-id="c095149" data-element_type="column">
+																		<div className="elementor-widget-wrap elementor-element-populated">
+																							<section className="elementor-section elementor-inner-section elementor-element elementor-element-d2a12ca elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="d2a12ca" data-element_type="section">
+																					<div className="elementor-container elementor-column-gap-default">
+																				<div className="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-c0fc99a" data-id="c0fc99a" data-element_type="column">
+																		<div className="elementor-widget-wrap elementor-element-populated">
+																							<div className="elementor-element elementor-element-164e191 elementor-widget elementor-widget-mf-listing-fname" data-id="164e191" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-listing-fname&quot;}" data-widget_type="mf-listing-fname.default">
+																			<div className="elementor-widget-container">
+
+																	<div className="mf-input-wrapper">
+																						<label className="mf-input-label" htmlFor="mf-input-text-164e191">
+																				${ parent.decodeEntities(`Name`) } 					<span className="mf-input-required-indicator"></span>
+																			</label>
+
+																		<input type="text" className="mf-input " id="mf-input-text-164e191"
+																			name="mf-listing-fname"
+																			placeholder="${ parent.decodeEntities(`Your Name`) } "
+																			onInput=${ parent.handleChange }
+
+																								aria-invalid=${validation.errors['mf-listing-fname'] ? 'true' : 'false'}
+																				ref=${ el => parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":false,"expression":"null"}, el) }
+																						/>
+
+																						<${validation.ErrorMessage}
+																				errors=${validation.errors}
+																				name="mf-listing-fname"
+																				as=${html`<span className="mf-error-message"></span>`}
+																				/>
+																							</div>
+
+																			</div>
+																			</div>
+																			<div className="elementor-element elementor-element-23e5581 elementor-widget elementor-widget-mf-telephone" data-id="23e5581" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-telephone&quot;}" data-widget_type="mf-telephone.default">
+																			<div className="elementor-widget-container">
+
+																	<div className="mf-input-wrapper">
+																						<label className="mf-input-label" htmlFor="mf-input-telephone-23e5581">
+																				${ parent.decodeEntities(`Phone Number`) } 					<span className="mf-input-required-indicator"></span>
+																			</label>
+
+																		<input
+																			type="tel"
+																			className="mf-input "
+																			id="mf-input-telephone-23e5581"
+																			name="mf-telephone"
+																			placeholder="${ parent.decodeEntities(`Your Phone Number`) } "
+																								onInput=${parent.handleChange}
+																				aria-invalid=${validation.errors['mf-telephone'] ? 'true' : 'false'}
+																				ref=${el => parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":false,"expression":"null"}, el)}
+																							/>
+
+																						<${validation.ErrorMessage}
+																				errors=${validation.errors}
+																				name="mf-telephone"
+																				as=${html`<span className="mf-error-message"></span>`}
+																				/>
+
+
+																	</div>
+
+																			</div>
+																			</div>
+																			<div className="elementor-element elementor-element-36c694f elementor-widget elementor-widget-mf-date" data-id="36c694f" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-pick-up-date&quot;}" data-widget_type="mf-date.default">
+																			<div className="elementor-widget-container">
+
+																	<div className="mf-input-wrapper">
+																						<label className="mf-input-label" htmlFor="mf-input-date-36c694f">
+																				${ parent.decodeEntities(`Pick Up Date`) } 					<span className="mf-input-required-indicator"></span>
+																			</label>
+
+																		<${props.Flatpickr}
+																				name="mf-pick-up-date"
+																				className="mf-input mf-date-input mf-left-parent "
+																				placeholder="${ parent.decodeEntities(`Select Date`) } "
+																				options=${{"minDate":"","maxDate":"","dateFormat":"m-d-Y","enableTime":"","disable":[],"mode":"single","static":true,"disableMobile":true,"time_24hr":false}}
+																				value=${parent.getValue('mf-pick-up-date')}
+																				onInput=${parent.handleDateTime}
+																				aria-invalid=${validation.errors['mf-pick-up-date'] ? 'true' : 'false'}
+																				ref=${el => props.DateWidget(
+																						el,
+																						'',
+																						{"message":"This field is required.","required":false},
+																						register,
+																						parent
+																					)}
+																				/>
+
+																						<${validation.ErrorMessage}
+																				errors=${validation.errors}
+																				name="mf-pick-up-date"
+																				as=${html`<span className="mf-error-message"></span>`}
+																				/>
+																							</div>
+
+
+																			</div>
+																			</div>
+																			<div className="elementor-element elementor-element-d7e2713 elementor-widget elementor-widget-mf-select" data-id="d7e2713" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-pick-up-location&quot;,&quot;mf_input_list&quot;:[{&quot;mf_input_option_text&quot;:&quot;Shuttle Denpasar&quot;,&quot;mf_input_option_value&quot;:&quot;value-1&quot;,&quot;_id&quot;:&quot;e344976&quot;,&quot;mf_input_option_status&quot;:&quot;&quot;,&quot;mf_input_option_selected&quot;:&quot;&quot;},{&quot;mf_input_option_text&quot;:&quot;Shuttle Badung&quot;,&quot;mf_input_option_value&quot;:&quot;value-2&quot;,&quot;_id&quot;:&quot;cc54f1f&quot;,&quot;mf_input_option_status&quot;:&quot;&quot;,&quot;mf_input_option_selected&quot;:&quot;&quot;},{&quot;mf_input_option_text&quot;:&quot;Shuttle Tabanan&quot;,&quot;mf_input_option_value&quot;:&quot;value-3&quot;,&quot;_id&quot;:&quot;974a837&quot;,&quot;mf_input_option_status&quot;:&quot;&quot;,&quot;mf_input_option_selected&quot;:&quot;&quot;}]}" data-widget_type="mf-select.default">
+																			<div className="elementor-widget-container">
+
+
+																	<div className="mf-input-wrapper">
+																						<label className="mf-input-label" htmlFor="mf-input-select-d7e2713">
+																				${ parent.decodeEntities(`Pick Up Location`) } 					<span className="mf-input-required-indicator"></span>
+																			</label>
+
+																		<${props.Select}
+																			className=${"mf-input mf-input-select  " + ( validation.errors['mf-pick-up-location'] ? 'mf-invalid' : '' )}
+																			classNamePrefix="mf_select"
+																			name="mf-pick-up-location"
+																			placeholder="${ parent.decodeEntities(`Select Location`) } "
+																			isSearchable=${false}
+																			options=${[{"label":"Shuttle Denpasar","value":"value-1","isDisabled":false},{"label":"Shuttle Badung","value":"value-2","isDisabled":false},{"label":"Shuttle Tabanan","value":"value-3","isDisabled":false}]}
+																			value=${parent.getValue("mf-pick-up-location") ? [{"label":"Shuttle Denpasar","value":"value-1","isDisabled":false},{"label":"Shuttle Badung","value":"value-2","isDisabled":false},{"label":"Shuttle Tabanan","value":"value-3","isDisabled":false}].filter(item => item.value === parent.getValue("mf-pick-up-location"))[0] : []}
+																			onChange=${(e)=> parent.handleSelect(e, "mf-pick-up-location")}
+																			ref=${() => {
+																								register({ name: "mf-pick-up-location" }, parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":false}));
+																				if ( parent.getValue("mf-pick-up-location") === '' && false ) {
+																				parent.setValue( 'mf-pick-up-location', '', true );
+																					parent.handleChange({
+																						target: {
+																							name: 'mf-pick-up-location',
+																							value: ''
+																						}
+																					});
+																				}
+																			}}
+																			/>
+
+																						<${validation.ErrorMessage}
+																				errors=${validation.errors}
+																				name="mf-pick-up-location"
+																				as=${html`<span className="mf-error-message"></span>`}
+																				/>
+																							</div>
+
+
+																			</div>
+																			</div>
+																				</div>
+																	</div>
+																			<div className="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-9e943c2" data-id="9e943c2" data-element_type="column">
+																		<div className="elementor-widget-wrap elementor-element-populated">
+																							<div className="elementor-element elementor-element-61ff3a2 elementor-widget elementor-widget-mf-email" data-id="61ff3a2" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-email&quot;}" data-widget_type="mf-email.default">
+																			<div className="elementor-widget-container">
+
+																	<div className="mf-input-wrapper">
+																						<label className="mf-input-label" htmlFor="mf-input-email-61ff3a2">
+																				${ parent.decodeEntities(`Email`) } 					<span className="mf-input-required-indicator"></span>
+																			</label>
+
+																		<input
+																			type="email"
+
+																			defaultValue=""
+																			className="mf-input "
+																			id="mf-input-email-61ff3a2"
+																			name="mf-email"
+																			placeholder="${ parent.decodeEntities(`Your Email`) } "
+
+																			onBlur=${parent.handleChange} onFocus=${parent.handleChange} aria-invalid=${validation.errors['mf-email'] ? 'true' : 'false' }
+																			ref=${el=> parent.activateValidation({"message":"This field is required.","emailMessage":"Please enter a valid Email address","minLength":1,"maxLength":"","type":"none","required":false,"expression":"null"}, el)}
+																						/>
+
+																					<${validation.ErrorMessage}
+																			errors=${validation.errors}
+																			name="mf-email"
+																			as=${html`<span className="mf-error-message"></span>`}
+																		/>
+
+																				</div>
+
+																	</div>
+																			</div>
+																			<div className="elementor-element elementor-element-2aa38b8 elementor-widget elementor-widget-mf-select" data-id="2aa38b8" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-select&quot;,&quot;mf_input_list&quot;:[{&quot;mf_input_option_text&quot;:&quot;Volto 403&quot;,&quot;mf_input_option_value&quot;:&quot;value-1&quot;,&quot;_id&quot;:&quot;a925c03&quot;,&quot;mf_input_option_status&quot;:&quot;&quot;,&quot;mf_input_option_selected&quot;:&quot;&quot;},{&quot;mf_input_option_text&quot;:&quot;Etiquette 101&quot;,&quot;mf_input_option_value&quot;:&quot;value-2&quot;,&quot;_id&quot;:&quot;d2e57ea&quot;,&quot;mf_input_option_status&quot;:&quot;&quot;,&quot;mf_input_option_selected&quot;:&quot;&quot;},{&quot;mf_input_option_text&quot;:&quot;Skavia 929&quot;,&quot;mf_input_option_value&quot;:&quot;value-3&quot;,&quot;_id&quot;:&quot;a42ae9b&quot;,&quot;mf_input_option_status&quot;:&quot;&quot;,&quot;mf_input_option_selected&quot;:&quot;&quot;}]}" data-widget_type="mf-select.default">
+																			<div className="elementor-widget-container">
+
+
+																	<div className="mf-input-wrapper">
+																						<label className="mf-input-label" htmlFor="mf-input-select-2aa38b8">
+																				${ parent.decodeEntities(`Bus Type`) } 					<span className="mf-input-required-indicator"></span>
+																			</label>
+
+																		<${props.Select}
+																			className=${"mf-input mf-input-select  " + ( validation.errors['mf-select'] ? 'mf-invalid' : '' )}
+																			classNamePrefix="mf_select"
+																			name="mf-select"
+																			placeholder="${ parent.decodeEntities(`Select Bus Type`) } "
+																			isSearchable=${false}
+																			options=${[{"label":"Volto 403","value":"value-1","isDisabled":false},{"label":"Etiquette 101","value":"value-2","isDisabled":false},{"label":"Skavia 929","value":"value-3","isDisabled":false}]}
+																			value=${parent.getValue("mf-select") ? [{"label":"Volto 403","value":"value-1","isDisabled":false},{"label":"Etiquette 101","value":"value-2","isDisabled":false},{"label":"Skavia 929","value":"value-3","isDisabled":false}].filter(item => item.value === parent.getValue("mf-select"))[0] : []}
+																			onChange=${(e)=> parent.handleSelect(e, "mf-select")}
+																			ref=${() => {
+																								register({ name: "mf-select" }, parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":false}));
+																				if ( parent.getValue("mf-select") === '' && false ) {
+																				parent.setValue( 'mf-select', '', true );
+																					parent.handleChange({
+																						target: {
+																							name: 'mf-select',
+																							value: ''
+																						}
+																					});
+																				}
+																			}}
+																			/>
+
+																						<${validation.ErrorMessage}
+																				errors=${validation.errors}
+																				name="mf-select"
+																				as=${html`<span className="mf-error-message"></span>`}
+																				/>
+																							</div>
+
+
+																			</div>
+																			</div>
+																			<div className="elementor-element elementor-element-93f5d6c elementor-widget elementor-widget-mf-date" data-id="93f5d6c" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-return-date&quot;}" data-widget_type="mf-date.default">
+																			<div className="elementor-widget-container">
+
+																	<div className="mf-input-wrapper">
+																						<label className="mf-input-label" htmlFor="mf-input-date-93f5d6c">
+																				${ parent.decodeEntities(`Return Date`) } 					<span className="mf-input-required-indicator"></span>
+																			</label>
+
+																		<${props.Flatpickr}
+																				name="mf-return-date"
+																				className="mf-input mf-date-input mf-left-parent "
+																				placeholder="${ parent.decodeEntities(`Return Date`) } "
+																				options=${{"minDate":"","maxDate":"","dateFormat":"m-d-Y","enableTime":"","disable":[],"mode":"single","static":true,"disableMobile":true,"time_24hr":false}}
+																				value=${parent.getValue('mf-return-date')}
+																				onInput=${parent.handleDateTime}
+																				aria-invalid=${validation.errors['mf-return-date'] ? 'true' : 'false'}
+																				ref=${el => props.DateWidget(
+																						el,
+																						'',
+																						{"message":"This field is required.","required":false},
+																						register,
+																						parent
+																					)}
+																				/>
+
+																						<${validation.ErrorMessage}
+																				errors=${validation.errors}
+																				name="mf-return-date"
+																				as=${html`<span className="mf-error-message"></span>`}
+																				/>
+																							</div>
+
+
+																			</div>
+																			</div>
+																			<div className="elementor-element elementor-element-aca346f elementor-widget elementor-widget-mf-select" data-id="aca346f" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-return-location&quot;,&quot;mf_input_list&quot;:[{&quot;mf_input_option_text&quot;:&quot;Shuttle Denpasar&quot;,&quot;mf_input_option_value&quot;:&quot;value-1&quot;,&quot;_id&quot;:&quot;e344976&quot;,&quot;mf_input_option_status&quot;:&quot;&quot;,&quot;mf_input_option_selected&quot;:&quot;&quot;},{&quot;mf_input_option_text&quot;:&quot;Shuttle Badung&quot;,&quot;mf_input_option_value&quot;:&quot;value-2&quot;,&quot;_id&quot;:&quot;cc54f1f&quot;,&quot;mf_input_option_status&quot;:&quot;&quot;,&quot;mf_input_option_selected&quot;:&quot;&quot;},{&quot;mf_input_option_text&quot;:&quot;Shuttle Tabanan&quot;,&quot;mf_input_option_value&quot;:&quot;value-3&quot;,&quot;_id&quot;:&quot;974a837&quot;,&quot;mf_input_option_status&quot;:&quot;&quot;,&quot;mf_input_option_selected&quot;:&quot;&quot;}]}" data-widget_type="mf-select.default">
+																			<div className="elementor-widget-container">
+
+
+																	<div className="mf-input-wrapper">
+																						<label className="mf-input-label" htmlFor="mf-input-select-aca346f">
+																				${ parent.decodeEntities(`Return Location`) } 					<span className="mf-input-required-indicator"></span>
+																			</label>
+
+																		<${props.Select}
+																			className=${"mf-input mf-input-select  " + ( validation.errors['mf-return-location'] ? 'mf-invalid' : '' )}
+																			classNamePrefix="mf_select"
+																			name="mf-return-location"
+																			placeholder="${ parent.decodeEntities(`Select Location`) } "
+																			isSearchable=${false}
+																			options=${[{"label":"Shuttle Denpasar","value":"value-1","isDisabled":false},{"label":"Shuttle Badung","value":"value-2","isDisabled":false},{"label":"Shuttle Tabanan","value":"value-3","isDisabled":false}]}
+																			value=${parent.getValue("mf-return-location") ? [{"label":"Shuttle Denpasar","value":"value-1","isDisabled":false},{"label":"Shuttle Badung","value":"value-2","isDisabled":false},{"label":"Shuttle Tabanan","value":"value-3","isDisabled":false}].filter(item => item.value === parent.getValue("mf-return-location"))[0] : []}
+																			onChange=${(e)=> parent.handleSelect(e, "mf-return-location")}
+																			ref=${() => {
+																								register({ name: "mf-return-location" }, parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":false}));
+																				if ( parent.getValue("mf-return-location") === '' && false ) {
+																				parent.setValue( 'mf-return-location', '', true );
+																					parent.handleChange({
+																						target: {
+																							name: 'mf-return-location',
+																							value: ''
+																						}
+																					});
+																				}
+																			}}
+																			/>
+
+																						<${validation.ErrorMessage}
+																				errors=${validation.errors}
+																				name="mf-return-location"
+																				as=${html`<span className="mf-error-message"></span>`}
+																				/>
+																							</div>
+
+
+																			</div>
+																			</div>
+																				</div>
+																	</div>
+																						</div>
+																	</section>
+																			<div className="elementor-element elementor-element-ebc5c7f elementor-widget elementor-widget-mf-textarea" data-id="ebc5c7f" data-element_type="widget" data-settings="{&quot;mf_input_name&quot;:&quot;mf-textarea&quot;}" data-widget_type="mf-textarea.default">
+																			<div className="elementor-widget-container">
+
+																	<div className="mf-input-wrapper">
+																						<label className="mf-input-label" htmlFor="mf-input-text-area-ebc5c7f">
+																				${ parent.decodeEntities(`Additional Information`) } 					<span className="mf-input-required-indicator"></span>
+																			</label>
+
+																		<textarea className="mf-input mf-textarea " id="mf-input-text-area-ebc5c7f"
+																			name="mf-textarea"
+																			placeholder="${ parent.decodeEntities(`Additional Information ( Optional )`) } "
+																			cols="30" rows="10"
+																								onInput=${ parent.handleChange }
+																				aria-invalid=${validation.errors['mf-textarea'] ? 'true' : 'false'}
+																				ref=${ el => parent.activateValidation({"message":"This field is required.","minLength":1,"maxLength":"","type":"none","required":false,"expression":"null"}, el)}
+																							></textarea>
+
+																						<${validation.ErrorMessage}
+																				errors=${validation.errors}
+																				name="mf-textarea"
+																				as=${html`<span className="mf-error-message"></span>`}
+																				/>
+																							</div>
+
+																			</div>
+																			</div>
+																			<div className="elementor-element elementor-element-655455e mf-btn--justify mf-btn--tablet-justify mf-btn--mobile-justify elementor-widget elementor-widget-mf-button" data-id="655455e" data-element_type="widget" data-widget_type="mf-button.default">
+																			<div className="elementor-widget-container">
+																				<div className="mf-btn-wraper " data-mf-form-conditional-logic-requirement="">
+																						<button type="submit" className="metform-btn metform-submit-btn " id="">
+																				<span>${ parent.decodeEntities(`Submit Button`) } </span>
+																			</button>
+																				</div>
+																			</div>
+																			</div>
+																				</div>
+																	</div>
+																						</div>
+																	</section>
+																						</div>
+																						`}
+																				</div>
+
+																				${is_dummy_markup ? message_position === 'bottom' ? props.ResponseDummyMarkup(message_successIcon, message_proClass) : '' : ''}
+																				${is_dummy_markup ? ' ' : message_position === 'bottom' ? props.SubmitResponseMarkup`${parent}${state}${message_successIcon}${message_errorIcon}${message_proClass}` : ''}
+
+																			</form>
+																		`
+																</script>
+
+
+																<form method="post" action="process.php">
+																	<label for="name">Name</label>
+																	<input type="text" id="name" name="name" required> <br />
+
+
+																	<label for="phone">Phone Number</label>
+																	<input type="tel" id="phone" name="phone" required> <br />
+
+																	<label for="email">Email</label>
+																	<input type="email" id="email" name="email" required><br />
+
+																	<label for="subject">Subject</label>
+																	<input type="text" id="subject" name="subject" required> <br />
+
+																	<label for="message">Message</label>
+																	<textarea id="message" name="message" required></textarea>
+
+																	<button type="submit">Submit</button>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<link rel='stylesheet' id='jeg-dynamic-style-css' href='~/user/assests/wp-content/plugins/jeg-elementor-kit/lib/jeg-framework/assets/css/jeg-dynamic-styles6f3e.css?ver=1.3.0' media='all' />
+		<link rel='stylesheet' id='elementor-post-24-css' href='~/user/assests/wp-content/uploads/sites/300/elementor/css/post-2450ca.css?ver=1700559605' media='all' />
+		<link rel='stylesheet' id='elementor-post-434-css' href='~/user/assests/wp-content/uploads/sites/300/elementor/css/post-434dff6.css?ver=1700571174' media='all' />
+		<link rel='stylesheet' id='flatpickr-css' href='~/user/assests/wp-content/plugins/metform/public/assets/css/flatpickr.min9e95.css?ver=3.8.0' media='all' />
+		<link rel='stylesheet' id='metform-ui-css' href='~/user/assests/wp-content/plugins/metform/public/assets/css/metform-ui9e95.css?ver=3.8.0' media='all' />
+		<link rel='stylesheet' id='metform-style-css' href='~/user/assests/wp-content/plugins/metform/public/assets/css/style9e95.css?ver=3.8.0' media='all' />
+		<link rel='stylesheet' id='elementor-post-26-css' href='~/user/assests/wp-content/uploads/sites/300/elementor/css/post-2650ca.css?ver=1700559605' media='all' />
+		<link rel='stylesheet' id='elementor-icons-fa-brands-css' href='~/user/assests/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min52d5.css?ver=5.15.3' media='all' />
+		<link rel='stylesheet' id='e-animations-css' href='~/user/assests/wp-content/plugins/elementor/assets/lib/animations/animations.min8864.css?ver=3.17.3' media='all' />
+		<script src="~/user/assests/wp-content/themes/hello-elementor/assets/js/hello-frontend.min8a54.js?ver=1.0.0" id="hello-theme-frontend-js"></script>
+		<script src="~/user/assests/wp-content/plugins/elementor/assets/js/webpack.runtime.min8864.js?ver=3.17.3" id="elementor-webpack-runtime-js"></script>
+		<script src="~/user/assests/wp-content/plugins/elementor/assets/js/frontend-modules.min8864.js?ver=3.17.3" id="elementor-frontend-modules-js"></script>
+		<script src="~/user/assests/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min05da.js?ver=4.0.2" id="elementor-waypoints-js"></script>
+		<script src="~/user/assests/wp-includes/js/jquery/ui/core.min3f14.js?ver=1.13.2" id="jquery-ui-core-js"></script>
+		<script id="elementor-frontend-js-before">
+			var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselWrapperAriaLabel":"Carousel | Horizontal scrolling: Arrow Left & Right","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},"version":"3.17.3","is_static":false,"experimentalFeatures":{"e_dom_optimization":true,"e_optimized_assets_loading":true,"e_optimized_css_loading":true,"additional_custom_breakpoints":true,"hello-theme-header-footer":true,"landing-pages":true},"urls":{"assets":"https:\/\/templatekit.jegtheme.com\/shuttle\/wp-content\/plugins\/elementor\/assets\/"},"swiperClass":"swiper-container","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"title","hello_header_menu_layout":"horizontal","hello_footer_logo_type":"logo"},"post":{"id":330,"title":"Bus%20Detail%20%E2%80%93%20Shuttle","excerpt":"","featuredImage":false}};
+		</script>
+		<script src="~/user/assests/wp-content/plugins/elementor/assets/js/frontend.min8864.js?ver=3.17.3" id="elementor-frontend-js"></script>
+		<script id="elementor-frontend-js-after">
+			var jkit_ajax_url = "../indexe2f2.html?jkit-ajax-request=jkit_elements", jkit_nonce = "cff48da9f5";
+		</script>
+		<script src="~/user/assests/wp-content/plugins/jeg-elementor-kit/assets/js/elements/sticky-element61da.js?ver=2.6.2" id="jkit-sticky-element-js"></script>
+		<script src="~/user/assests/wp-content/plugins/jeg-elementor-kit/assets/js/elements/nav-menu61da.js?ver=2.6.2" id="jkit-element-navmenu-js"></script>
+		<script src="~/user/assests/wp-content/plugins/metform/public/assets/js/htm9e95.js?ver=3.8.0" id="htm-js"></script>
+		<script src="~/user/assests/wp-includes/js/dist/vendor/wp-polyfill-inert.min0226.js?ver=3.1.2" id="wp-polyfill-inert-js"></script>
+		<script src="~/user/assests/wp-includes/js/dist/vendor/regenerator-runtime.min6c85.js?ver=0.14.0" id="regenerator-runtime-js"></script>
+		<script src="~/user/assests/wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0" id="wp-polyfill-js"></script>
+		<script src="~/user/assests/wp-includes/js/dist/vendor/react.min7a3b.js?ver=18.2.0" id="react-js"></script>
+		<script src="~/user/assests/wp-includes/js/dist/vendor/react-dom.min7a3b.js?ver=18.2.0" id="react-dom-js"></script>
+		<script src="~/user/assests/wp-includes/js/dist/escape-html.min0311.js?ver=03e27a7b6ae14f7afaa6" id="wp-escape-html-js"></script>
+		<script src="~/user/assests/wp-includes/js/dist/element.min0eb1.js?ver=ed1c7604880e8b574b40" id="wp-element-js"></script>
+		<script id="metform-app-js-extra">
+			var mf = {"postType":"page","restURI":"https:\/\/templatekit.jegtheme.com\/shuttle\/wp-json\/metform\/v1\/forms\/views\/","minMsg1":"Minimum length should be ","Msg2":" character long.","maxMsg1":"Maximum length should be ","maxNum":"Maximum number should be ","minNum":"Minimum number should be "};
+		</script>
+		<script src="~/user/assests/wp-content/plugins/metform/public/assets/js/app9e95.js?ver=3.8.0" id="metform-app-js"></script>
+		<script src="~/user/assests/wp-content/plugins/jeg-elementor-kit/assets/js/elements/mailchimp61da.js?ver=2.6.2" id="jkit-element-mailchimp-js"></script>
+</body>
+
+</html>
+

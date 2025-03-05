@@ -1,0 +1,135 @@
+﻿@model bus_reservation.Models.Booking
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Ticket Booking Form";
+    string userRole = User.FindFirstValue(ClaimTypes.Role); // Get the role from the logged-in user's claims
+
+    if (userRole == "Admin")
+    {
+        Layout = "~/Views/Shared/AdminLayout.cshtml";
+    }
+    else if (userRole == "Employee")
+    {
+        Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+    }
+    else
+    {
+        Layout = null; // Default or no layout
+    }
+}
+
+<div class="container-fluid pt-4 px-4 bg-dark">
+<h1 style="font-weight:bolder; color :gray;">Add New Booking</h1>
+
+@* <h4>Booking</h4> *@
+<hr />
+    <div class="row g-4">
+        <div class="bg-dark rounded h-100 p-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-sm-12 col-xl-12 mb-3">
+                   
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label">Customer Name</label>
+                <input asp-for="CustomerName" class="form-control" id="CustomerName" oninput="validateName()" required placeholder="Enter Customer Name"/>
+                <span id="nameError" class="text-danger"></span>
+            </div>
+                </div>
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                                <label asp-for="CustomerAge" class="control-label">Customer Age</label>
+                                <input asp-for="CustomerAge" class="form-control" id="CustomerAge" oninput="validateAge()" required placeholder="Enter Customer Age"/>
+                <span id="ageError" class="text-danger"></span>
+            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <label asp-for="CustomerContact" class="control-label">Customer Contact No.</label>
+                                <input asp-for="CustomerContact" class="form-control" id="CustomerContact" oninput="validateContact()" required placeholder="Enter Customer Contact No."/>
+                <span id="contactError" class="text-danger"></span>
+            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-12 mb-3">
+            <div class="form-group">
+                <label asp-for="CustomerEmail" class="control-label">Customer Email</label>
+                        <input type="email" asp-for="CustomerEmail" class="form-control" placeholder="Enter Customer Email"/>
+                <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+            </div>
+                </div>
+                    <div class="col-sm-12 col-xl-12 mb-3">
+            <div class="form-group">
+                <label asp-for="BusId" class="control-label">Choose Bus</label>
+                        <select asp-for="BusId" class="form-control" asp-items="ViewBag.BusId" required>
+                    <option value="">-- Select Bus --</option>
+                </select>
+            </div>
+                </div>
+                <div class="col-sm-12 col-xl-12 mt-4 mb-2">
+                    <div class="form-group">
+                        <input type="submit" value="Book Ticket" class="btn btn-outline-success w-100" class="btn btn-outline-success w-100" style="background-color: transparent;font-weight:bolder; color: white; border-radius:10px; border: 3px solid #FF5733; width: 100%; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+                               onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+                               onmouseout="this.style.backgroundColor='transparent'; this.style.color='Whitesmoke';" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a class="btn btn-outline-success" asp-action="Index" style="background-color: dimgrey;font-weight:bolder; color: whitesmoke; border-radius:10px; border: 3px solid; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+           onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+           onmouseout="this.style.backgroundColor='dimgrey'; this.style.color='Whitesmoke';">Back to List</a> <br /> <br />
+    </div>
+</div>
+
+<script>
+    function validateName() {
+        const name = document.getElementById('CustomerName').value.trim();
+        const nameRegex = /^[A-Za-z\s]+$/;
+        const nameError = document.getElementById('nameError');
+
+        if (!nameRegex.test(name) || name === "") {
+            nameError.innerText = 'Name must contain only letters and spaces.';
+            document.getElementById('CustomerName').classList.add('is-invalid');
+        } else {
+            nameError.innerText = '';
+            document.getElementById('CustomerName').classList.remove('is-invalid');
+            document.getElementById('CustomerName').classList.add('is-valid');
+        }
+    }
+
+    function validateAge() {
+        const age = document.getElementById('CustomerAge').value.trim();
+        const ageError = document.getElementById('ageError');
+
+        if (isNaN(age) || age <= 0) {
+            ageError.innerText = 'Age must be a number greater than 0.';
+            document.getElementById('CustomerAge').classList.add('is-invalid');
+        } else {
+            ageError.innerText = '';
+            document.getElementById('CustomerAge').classList.remove('is-invalid');
+            document.getElementById('CustomerAge').classList.add('is-valid');
+        }
+    }
+
+    function validateContact() {
+        const contact = document.getElementById('CustomerContact').value.trim();
+        const contactRegex = /^0\d{10}$/;
+        const contactError = document.getElementById('contactError');
+
+        if (!contactRegex.test(contact)) {
+            contactError.innerText = 'Contact must be 11 digits and start with 0.';
+            document.getElementById('CustomerContact').classList.add('is-invalid');
+        } else {
+            contactError.innerText = '';
+            document.getElementById('CustomerContact').classList.remove('is-invalid');
+            document.getElementById('CustomerContact').classList.add('is-valid');
+        }
+    }
+</script>
+
+

@@ -1,0 +1,155 @@
+﻿@model bus_reservation.Models.Route
+
+@{
+    ViewData["Title"] = "Edit Route";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    var error_routename = ViewBag.routename;
+    var error_startingplace = ViewBag.startingplace;
+    var error_destinationplace = ViewBag.destinationplace;
+}
+<div class="container-fluid pt-4 px-4 bg-dark">
+     <h1 style="font-weight:bolder ; color:whitesmoke">Edit Route</h1>
+
+<hr />
+<div class="row g-4">
+    <div class="bg-dark rounded h-100 p-4 ">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RouteId" />
+                <input type="hidden" asp-for="CreatedAt" />
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="StartingPlace" class="control-label"></label>
+                                <select asp-for="StartingPlace" class="form-control" asp-items="ViewBag.Locations" required id="StartingPlace" oninput="validatePlaces()">
+                                    <option value="">-- Select Starting Place --</option>
+                                </select>
+                                @if (error_startingplace != null)
+                                {
+                                    <span asp-validation-for="StartingPlace" class="text-danger">@error_startingplace</span>
+                                }
+                                <span asp-validation-for="StartingPlace" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="DestinationPlace" class="control-label"></label>
+                                <select asp-for="DestinationPlace" class="form-control" asp-items="ViewBag.Locations" required id="DestinationPlace" oninput="validatePlaces()">
+                                    <option value="">-- Select Destination Place --</option>
+                                </select>
+                                @if (error_destinationplace != null)
+                                {
+                                    <span asp-validation-for="DestinationPlace" class="text-danger">@error_destinationplace</span>
+                                }
+                                <span asp-validation-for="DestinationPlace" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <span id="placesError" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="RouteName" class="control-label"></label>
+                                <input asp-for="RouteName" class="form-control" placeholder="Enter Route Name. i.e. KHI - HYD" required id="routeName" oninput="validateRouteName()" />
+                                @if (error_routename != null)
+                                {
+                                    <span asp-validation-for="RouteName" class="text-danger">@error_routename</span>
+                                }
+                                <span id="routeNameError" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Distance" class="control-label"></label>
+                                <input asp-for="Distance" class="form-control" placeholder="Enter Distance in Km without ','" required id="distance" oninput="validateDistance()" />
+                                <span id="distanceError" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xl-12 mt-4 mb-2">
+                    <div class="form-group">
+                        <input type="submit" value="Edit Route" style="background-color: transparent;font-weight:bolder; color: white; border-radius:10px; border: 3px solid #FF5733; width: 100%; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+                               onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+                               onmouseout="this.style.backgroundColor='transparent'; this.style.color='Whitesmoke';" w-100" onclick="return validateForm()" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a class="btn btn-outline-success" asp-action="Index" style="background-color: dimgrey;font-weight:bolder; color: whitesmoke; border-radius:10px; border: 3px solid; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+           onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+           onmouseout="this.style.backgroundColor='dimgrey'; this.style.color='Whitesmoke';">Back to List</a> <br /> <br />
+    </div>
+</div>
+
+<script>
+    // Route Name Validation
+    function validateRouteName() {
+        var routeName = document.getElementById('routeName').value;
+        var routeNameRegex = /^[a-zA-Z\s\-]+$/; // Allows only letters, spaces, and hyphens
+        var routeNameError = document.getElementById('routeNameError');
+
+        if (!routeNameRegex.test(routeName)) {
+            routeNameError.textContent = "Route name can only contain letters, spaces, and hyphens.";
+            return false;
+        } else {
+            routeNameError.textContent = ""; // Clear error message
+            return true;
+        }
+    }
+
+    // Distance Validation
+    function validateDistance() {
+        var distance = document.getElementById('distance').value;
+        var distanceRegex = /^\d+$/; // Allows only integers
+        var distanceError = document.getElementById('distanceError');
+
+        if (!distanceRegex.test(distance)) {
+            distanceError.textContent = "Distance must be a valid integer.";
+            return false;
+        } else if (parseInt(distance) < 100) {
+            distanceError.textContent = "Distance must be at least 100.";
+            return false;
+        } else {
+            distanceError.textContent = ""; // Clear error message
+            return true;
+        }
+    }
+
+    // Starting and Destination Place Validation
+    function validatePlaces() {
+        var startingPlace = document.getElementById('StartingPlace');
+        var destinationPlace = document.getElementById('DestinationPlace');
+        var placesError = document.getElementById('placesError'); // Add a new span for places error
+
+        if (startingPlace.value === destinationPlace.value && startingPlace.value !== "") {
+            placesError.textContent = "Starting place and destination place cannot be the same.";
+            return false;
+        } else {
+            placesError.textContent = ""; // Clear error message
+            return true;
+        }
+    }
+
+    // Validate entire form before submission
+    function validateForm() {
+        var isRouteNameValid = validateRouteName();
+        var isDistanceValid = validateDistance();
+        var arePlacesValid = validatePlaces(); // Call the new validation function
+
+        // If any of the validation fails, return false to prevent form submission
+        if (!isRouteNameValid || !isDistanceValid || !arePlacesValid) {
+            return false;
+        }
+
+        return true; // Submit form if everything is valid
+    }
+</script>

@@ -1,0 +1,70 @@
+﻿@model bus_reservation.Models.Location
+
+@{
+    ViewData["Title"] = "Edit Location";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+
+}
+<div class="container-fluid pt-4 px-4 bg-dark">
+    <h1 style="font-weight:bolder ;color: dimgray ">Edit Location</h1>
+
+    <div class="row g-4">
+        <div class="bg-dark rounded h-100 p-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LocationId" />
+            <input type="hidden" asp-for="CreatedAt" />
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="form-group">
+                        <label asp-for="LocationName" class="control-label"></label>
+                        <input asp-for="LocationName" class="form-control" oninput="validateLocation(this)" required placeholder="Enter Valid Location Name" />
+                        <!-- Update the id of this span to avoid conflict -->
+                        <span id="LocationNameError" asp-validation-for="LocationName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-12 mt-4 mb-2">
+                    <div class="form-group">
+                        <h4></h4>
+                        <input type="submit" value="Edit Location" style="background-color: transparent;font-weight:bolder; color: white; border-radius:10px; border: 3px solid #FF5733; width: 100%; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+                               onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+                               onmouseout="this.style.backgroundColor='transparent'; this.style.color='Whitesmoke';" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a class="btn btn-outline-success" asp-action="Index" style="background-color: dimgrey;font-weight:bolder; color: whitesmoke; border-radius:10px; border: 3px solid; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+           onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+           onmouseout="this.style.backgroundColor='dimgrey'; this.style.color='Whitesmoke';">Back to List</a> <br /> <br />
+    </div>
+</div>
+
+<script>
+    function validateLocation(input) {
+        const regex = /^[A-Za-z\s]*$/;
+        const errorSpan = document.getElementById("LocationNameError"); // Use the new id for the error span
+        if (!regex.test(input.value)) {
+            errorSpan.textContent = "Location must consist of only letters and spaces.";
+            input.setCustomValidity("Invalid input");
+        } else {
+            errorSpan.textContent = "";
+            input.setCustomValidity("");
+        }
+    }
+
+    function validateForm() {
+        const inputs = document.querySelectorAll('input');
+        let isValid = true;
+
+        inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                isValid = false;
+                input.reportValidity();
+            }
+        });
+
+        return isValid;
+    }
+</script>

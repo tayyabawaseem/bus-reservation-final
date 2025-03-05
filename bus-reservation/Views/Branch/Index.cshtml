@@ -1,0 +1,106 @@
+﻿@model IEnumerable<bus_reservation.Models.Branch>
+
+@{
+    ViewData["Title"] = "Branch List";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int serialNumber = 1;
+    var successCreateMessage = TempData["SuccessCreateMessage"] as string;
+    var successEditMessage = TempData["SuccessEditMessage"] as string;
+    var successDeleteMessage = TempData["SuccessDeleteMessage"] as string;
+}
+<div class="container-fluid pt-4 px-4 bg-dark">
+
+<h1>
+    <a asp-action="Create" style="font-weight:bolder; color :gray;">
+Create New Branch</a>
+</h1>
+    @if (!string.IsNullOrEmpty(successCreateMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show"  style="background-color: gray; color: white; border: 2px solid #FF5733"
+        role="alert">
+            <strong>@successCreateMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(successEditMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show"  style="background-color: gray; color: white; border: 2px solid #FF5733"
+        role="alert">
+            <strong>@successEditMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(successDeleteMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show"  style="background-color: gray; color: white; border: 2px solid #FF5733"
+        role="alert">
+            <strong>@successDeleteMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <table class="table datatable text-center py-3">
+    <thead>
+        <tr>
+                <th>S.No</th>
+            <th>
+                Branch Code
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+                Zip Code
+            </th>
+            <th>
+                Contact
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+            {
+@foreach (var item in Model) {
+        <tr>
+                        <td>@serialNumber</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BranchCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contact)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" style="color: #FF5733;">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" style="color: #FF5733;">Delete</a>
+            </td>
+        </tr>
+                    serialNumber++;
+}
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8" class="text-center">No Branch Found</td>
+                </tr>
+            }
+    </tbody>
+</table>
+</div>

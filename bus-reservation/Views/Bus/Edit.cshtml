@@ -1,0 +1,236 @@
+﻿@model bus_reservation.Models.BusCreateViewModel
+
+@{
+    ViewData["Title"] = "Edit Bus";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="container-fluid pt-4 px-4 bg-dark">
+<h1 style="color:dimgray; font-weight:bolder">Edit Bus</h1>
+
+
+<hr />
+    <div class="row g-4 bg-dark">
+        <div class="bg-dark rounded h-100 p-4">
+            <form asp-action="Edit" id="busForm" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <input type="hidden" asp-for="Bus.BusNumber" />
+                <input type="hidden" asp-for="Bus.BusId" />
+                <input type="hidden" asp-for="Bus.CreatedAt" />
+                @* <p class="badge text-bg-success">Bus Number will not be Edited.</p> *@
+
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Bus.BusTypeId"></label>
+                                <select asp-for="Bus.BusTypeId" class="form-control" asp-items="Model.BusTypes" required>
+                                    <option value="">-- Select Bus Type --</option>
+                                </select>
+
+                                <span asp-validation-for="Bus.BusTypeId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Bus.RouteId"></label>
+                                <select asp-for="Bus.RouteId" class="form-control" asp-items="Model.Routes" required></select>
+                                <option value="">-- Select Route --</option>
+                                <span asp-validation-for="Bus.RouteId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Bus.TotalSeats"></label>
+                                <input asp-for="Bus.TotalSeats" class="form-control" id="totalSeats" required />
+                                <span id="totalSeatsError" class="text-danger"></span> <!-- Assigning an ID for error message -->
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+
+                            <div class="form-group">
+                                <label asp-for="Bus.AvailableSeats"></label>
+                                <input asp-for="Bus.AvailableSeats" class="form-control" id="availableSeats" required />
+                                <span id="availableSeatsError" class="text-danger"></span> <!-- Assigning an ID for error message -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+
+                            <div class="form-group">
+                                <label asp-for="Bus.DepartureTime"></label>
+                                <input asp-for="Bus.DepartureTime" class="form-control" type="datetime-local" id="departureTime" required value="@Model.Bus.DepartureTime.ToString("yyyy-MM-ddTHH:mm")" />
+                                <span id="departureTimeError" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+
+                            <div class="form-group">
+                                <label asp-for="Bus.ArrivalTime"></label>
+                                <input asp-for="Bus.ArrivalTime" class="form-control" type="datetime-local" id="arrivalTime" required />
+                                <span id="arrivalTimeError" class="text-danger"></span> <!-- Error message for ArrivalTime -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xl-12 mt-4 mb-2">
+                    <div class="form-group">
+                        <input type="submit" value="Edit Bus" class="btn btn-outline-success w-100" style="background-color: transparent;font-weight:bolder; color: white; border-radius:10px; border: 3px solid #FF5733; width: 100%; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+                               onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+                               onmouseout="this.style.backgroundColor='transparent'; this.style.color='Whitesmoke' " />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="mt-3">
+        <a class="btn btn-outline-success" asp-action="Index" style="background-color: dimgrey;font-weight:bolder; color: whitesmoke; border-radius:10px; border: 3px solid; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+           onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+           onmouseout="this.style.backgroundColor='dimgrey'; this.style.color='Whitesmoke';">Back to List</a> <br /> <br />/a>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        const departureTimeInput = document.getElementById('departureTime');
+        const arrivalTimeInput = document.getElementById('arrivalTime');
+
+        // Check if departureTime is empty (for Create action), set default value to tomorrow
+        if (!departureTimeInput.value) {
+            const today = new Date();
+            today.setDate(today.getDate() + 1); // Set to tomorrow
+
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0'); // Month is zero-based
+            const dd = String(today.getDate()).padStart(2, '0');
+            const minDate = `${yyyy}-${mm}-${dd}`;
+
+            // Set the min attribute for departure input and default value
+            departureTimeInput.setAttribute('min', minDate + 'T00:00');
+            departureTimeInput.value = minDate + 'T00:00';
+        }
+
+        // Clear arrival time if empty (for Create action)
+        if (!arrivalTimeInput.value) {
+            arrivalTimeInput.value = '';
+        }
+    };
+
+
+    document.getElementById('busForm').addEventListener('input', function (event) {
+        // Get the values of total and available seats
+        const totalSeats = parseInt(document.getElementById('totalSeats').value);
+        const availableSeats = parseInt(document.getElementById('availableSeats').value);
+
+        let valid = true; // Initialize validity flag
+
+        // Clear previous error messages
+        document.getElementById('totalSeatsError').textContent = '';
+        document.getElementById('availableSeatsError').textContent = '';
+
+        // Validate total seats
+        if (isNaN(totalSeats) || totalSeats < 30) {
+            valid = false;
+            document.getElementById('totalSeatsError').textContent = 'Total seats must be at least 30.';
+        }
+
+        // Validate available seats
+        if (isNaN(availableSeats) || availableSeats < 0 || availableSeats > totalSeats) {
+            valid = false;
+            document.getElementById('availableSeatsError').textContent = 'Available seats must be between 0 and total seats.';
+        }
+
+        // If not valid, prevent form submission
+        if (!valid) {
+            event.preventDefault(); // Prevent form submission
+        }
+    });
+
+    document.getElementById('departureTime').addEventListener('change', function () {
+        // Enable arrival time input after departure time is selected
+        const departureTimeValue = this.value;
+        const arrivalInput = document.getElementById('arrivalTime');
+        arrivalInput.disabled = false; // Enable arrival time input
+        arrivalInput.setAttribute('min', departureTimeValue); // Set minimum value to departure time
+
+        // Calculate minimum arrival time (2 hours after departure)
+        const departureTime = new Date(departureTimeValue);
+        departureTime.setHours(departureTime.getHours() + 2); // Add 2 hours
+        arrivalInput.setAttribute('min', departureTime.toISOString().slice(0, 16)); // Set the minimum arrival time to 2 hours later
+
+        // Clear previous error message when departure time is selected
+        document.getElementById('arrivalTimeError').textContent = '';
+
+        // Adjust the value of the arrival time input to not be less than the minimum allowed
+        if (arrivalInput.value < arrivalInput.getAttribute('min')) {
+            arrivalInput.value = arrivalInput.getAttribute('min'); // Update the value to the minimum allowed
+        }
+    });
+
+    document.getElementById('arrivalTime').addEventListener('change', function () {
+        const departureTime = new Date(document.getElementById('departureTime').value);
+        const arrivalTime = new Date(this.value);
+        const arrivalError = document.getElementById('arrivalTimeError');
+
+        // Clear previous error message
+        arrivalError.textContent = '';
+
+        // Validate that arrival time is after 2 hours of departure time
+        const minArrivalTime = new Date(departureTime);
+        minArrivalTime.setHours(minArrivalTime.getHours() + 2); // Add 2 hours
+        if (arrivalTime <= minArrivalTime) {
+            arrivalError.textContent = 'Arrival time must be at least 2 hours after departure time.';
+            return; // Exit early if this validation fails
+        }
+
+        // Validate arrival time is greater than departure time
+        if (arrivalTime <= departureTime) {
+            arrivalError.textContent = 'Arrival time must be greater than departure time.';
+        }
+    });
+
+    document.getElementById('busForm').addEventListener('submit', function (event) {
+        // Get the values of departure and arrival times
+        const departureTime = new Date(document.getElementById('departureTime').value);
+        const arrivalTime = new Date(document.getElementById('arrivalTime').value);
+
+        let valid = true; // Initialize validity flag
+
+        // Clear previous error messages
+        document.getElementById('departureTimeError').textContent = '';
+        document.getElementById('arrivalTimeError').textContent = '';
+
+        // Validate departure time
+        if (isNaN(departureTime.getTime())) {
+            valid = false;
+            document.getElementById('departureTimeError').textContent = 'Please select a valid departure time.';
+        }
+
+        // Validate arrival time
+        if (!arrivalTime || isNaN(arrivalTime.getTime())) {
+            valid = false;
+            document.getElementById('arrivalTimeError').textContent = 'Please select a valid arrival time.';
+        } else if (arrivalTime <= departureTime) {
+            valid = false;
+            document.getElementById('arrivalTimeError').textContent = 'Arrival time must be greater than departure time.';
+        } else if (arrivalTime <= new Date(departureTime.getTime() + 2 * 60 * 60 * 1000)) { // Check if arrival is less than 2 hours after departure
+            valid = false;
+            document.getElementById('arrivalTimeError').textContent = 'Arrival time must be at least 2 hours after departure time.';
+        }
+
+        // If not valid, prevent form submission
+        if (!valid) {
+            event.preventDefault(); // Prevent form submission
+        }
+    });
+</script>

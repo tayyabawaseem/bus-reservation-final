@@ -1,0 +1,38 @@
+﻿@model bus_reservation.Models.BusType
+
+@{
+    ViewData["Title"] = "Add Bus Type";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="container-fluid pt-4 px-4 bg-dark">
+    <h1 style="font-weight:bolder; color:gray">Add BusType</h1>
+
+    @* <h4>BusType</h4> *@
+    <hr />
+    <div class="row g-4">
+        <div class="bg-dark rounded h-100 p-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="col-sm-12 col-xl-12 mb-3">
+                        <div class="form-group">
+                        <label asp-for="BusTypeName" class="control-label"></label>
+                            <input asp-for="BusTypeName" class="form-control" required placeholder="Enter Bus Type Name"/>
+                            <span asp-validation-for="BusTypeName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-12 mt-4 mb-2">
+                    <div class="form-group">
+                        <input type="submit" value="Add Bus Type" class="btn btn-outline-success w-100" style="background-color: transparent;font-weight:bolder; color: white; border-radius:10px; border: 3px solid #FF5733; width: 100%; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+                               onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+                               onmouseout="this.style.backgroundColor='transparent'; this.style.color='Whitesmoke'; "/>
+                       </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="mt-3">
+        <a class="btn btn-outline-success" asp-action="Index" style="background-color: dimgrey;font-weight:bolder; color: whitesmoke; border-radius:10px; border: 3px solid; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+           onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+           onmouseout="this.style.backgroundColor='dimgrey'; this.style.color='Whitesmoke';">Back to List</a> <br /> <br />
+    </div>
+</div>

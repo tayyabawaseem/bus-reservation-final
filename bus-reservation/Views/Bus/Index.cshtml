@@ -1,0 +1,212 @@
+﻿@model IEnumerable<bus_reservation.Models.Bus>
+
+@{
+    ViewData["Title"] = "Bus List";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int serialNumber = 1;
+    var successCreateMessage = TempData["SuccessCreateMessage"] as string;
+    var successEditMessage = TempData["SuccessEditMessage"] as string;
+    var successDeleteMessage = TempData["SuccessDeleteMessage"] as string;
+}
+
+<style>
+    
+    /* Additional CSS for table borders */
+    table.datatable th, table.datatable td {
+        border: 2px solid #FF5733 !important;
+        padding: 10px;
+        text-align: center;
+    }
+
+    table.datatable thead th {
+        border-bottom: 3px solid #FF5733 !important;
+        text-align: center;
+    }
+
+    .route-row, .action-row {
+        display: none;
+    }
+
+    .route-action-column {
+        visibility: hidden; /* Keep column space but hide content */
+    }
+    /* Updated CSS to fully hide the columns and collapse their space */
+    .route-action-column {
+        display: none; /* Hide the column and collapse the space */
+    }
+
+    .toggle-icon {
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        width: 20px;
+        height: 20px;
+        background-color: gray; /* Gray circle background */
+        border-radius: 50%; /* Makes the icon's background circular */
+        position: relative;
+        z-index: 1; /* Ensure the icon stays on top of the background */
+        transition: transform 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Centers the icon text */
+        top:22px;
+    }
+
+
+        /* Create the orange border circle behind the gray circle */
+        /* .toggle-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px; /* Size of the orange border circle */
+            /* height: 40px;
+            border-radius: 50%; */
+            /* Orange border */
+            /* z-index: 0; /* Place the orange border circle behind the icon  */
+        }
+ */
+        /* Optional: Add hover effect to the icon */
+        .toggle-icon:hover {
+            color: #FF5733; /* Change icon color to orange on hover */
+            transform: scale(1.2); /* Slightly enlarge the icon on hover */
+        }
+
+    .expanded-row {
+        background-color: #f4f4f4;
+    }
+
+    /* Left align Route and Actions text */
+    .route-row td, .action-row td {
+        text-align: left !important;
+        padding-left: 20px; /* Optional: adds padding for better alignment */
+    }
+</style>
+
+<div class="container-fluid pt-4 px-4 bg-dark">
+
+    <h1>
+        <a asp-action="Create" style="color:gray ; font-weight:bolder;">Add New Bus list</a>
+    </h1>
+    @if (!string.IsNullOrEmpty(successCreateMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show" style="background-color: gray; color: white; border: 2px solid #FF5733" role="alert">
+            <strong>@successCreateMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(successEditMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show" style="background-color: gray; color: white; border: 2px solid #FF5733" role="alert">
+            <strong>@successEditMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(successDeleteMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show" style="background-color: gray; color: white; border: 2px solid #FF5733" role="alert">
+            <strong>@successDeleteMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <table class="table datatable text-center py-3">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>@Html.DisplayNameFor(model => model.BusNumber)</th>
+                <th>@Html.DisplayNameFor(model => model.TotalSeats)</th>
+                <th>@Html.DisplayNameFor(model => model.AvailableSeats)</th>
+                <th>@Html.DisplayNameFor(model => model.DepartureTime)</th>
+                <th>@Html.DisplayNameFor(model => model.ArrivalTime)</th>
+                <th>@Html.DisplayNameFor(model => model.BusType)</th>
+                @* <th class="route-action-column">@Html.DisplayNameFor(model => model.Route)</th> *@
+                @* <th class="route-action-column">Actions</th> *@
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <span class="toggle-icon" onclick="toggleRow(@item.BusId)">+</span>
+                            @serialNumber
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.BusNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TotalSeats)</td>
+                        <td>@Html.DisplayFor(modelItem => item.AvailableSeats)</td>
+                        <td>@String.Format("{0:dd/MM/yyyy hh:mm tt}", item.DepartureTime)</td>
+                        <td>@String.Format("{0:dd/MM/yyyy hh:mm tt}", item.ArrivalTime)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BusType.BusTypeName)</td>
+                        <td class="route-action-column">
+                            @if (item.Route != null)
+                            {
+                                var startingPlace = item.Route.StartingPlaceNavigation?.LocationName;
+                                var destinationPlace = item.Route.DestinationPlaceNavigation?.LocationName;
+                                var routeDisplay = $"{item.Route.RouteName} ({startingPlace} to {destinationPlace})";
+                                @Html.Raw(routeDisplay)
+                            }
+                        </td>
+                        <td class="route-action-column">
+                            <a asp-action="Edit" asp-route-id="@item.BusId" style= "color: #FF5733 !important;">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.BusId" style= "color: #FF5733 !important;">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.BusId" style= "color: #FF5733 !important;">Delete</a>
+                        </td>
+                    </tr>
+
+                    <!-- Hidden row for Route and Actions that will show on clicking the + icon -->
+                    <tr class="expanded-row route-row" id="route-row-@item.BusId">
+                        <td colspan="9">
+                            <strong>Route:</strong>
+                            @if (item.Route != null)
+                            {
+                                var startingPlace = item.Route.StartingPlaceNavigation?.LocationName;
+                                var destinationPlace = item.Route.DestinationPlaceNavigation?.LocationName;
+                                var routeDisplay = $"{item.Route.RouteName} ({startingPlace} to {destinationPlace})";
+                                @Html.Raw(routeDisplay)
+                            }
+                        </td>
+                    </tr>
+                    <tr class="expanded-row action-row" id="action-row-@item.BusId">
+                        <td colspan="9">
+                            <strong>Actions:</strong>
+                            <a asp-action="Edit" asp-route-id="@item.BusId"  style="color:#FF5733;">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@item.BusId" style="color:#FF5733;">Delete</a> |
+                            <a asp-action="Details" asp-route-id="@item.BusId" style="color:#FF5733;">Details</a> 
+                        </td>
+                    </tr>
+
+                    serialNumber++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="9" class="text-center">No Bus Found</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function toggleRow(busId) {
+        var routeRow = document.getElementById('route-row-' + busId);
+        var actionRow = document.getElementById('action-row-' + busId);
+        var icon = document.querySelector(`#route-row-${busId} .toggle-icon`);
+
+        if (routeRow.style.display === "none" || actionRow.style.display === "none") {
+            routeRow.style.display = "table-row";
+            actionRow.style.display = "table-row";
+            icon.textContent = "-"; // Change icon to minus
+        } else {
+            routeRow.style.display = "none";
+            actionRow.style.display = "none";
+            icon.textContent = "+"; // Change icon to plus
+        }
+    }
+</script>

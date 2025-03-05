@@ -1,0 +1,322 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@* <h1>Index</h1> *@
+
+@model bus_reservation.Models.DashboardViewModel
+
+@* @{ *@
+@*     ViewData["Title"] = "Admin Dashboard"; *@
+@*     Layout = "~/Views/Shared/Adminlayout.cshtml"; *@
+@*     int serialNumberfortodaybus = 1; *@
+@*     int serialNumberfortomorrowbus = 1; *@
+@* } *@
+
+
+<style>
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    .content-wrapper {
+        background-color: #FF5733;
+    }
+
+    .border-primary {
+        border-color: #FF5733 !important;
+    }
+
+    .small-box:hover {
+        text-decoration: none;
+    }
+
+    .bg-light, .bg-light > a {
+        color: #1f2d3d !important;
+    }
+
+    .bg-light {
+        background-color: #f8f9fa !important;
+    }
+
+    .small-box {
+        border-radius: .25rem;
+        box-shadow: 0 0 1px rgba(0,0,0,.125),0 1px 3px rgba(0,0,0,.2);
+        display: block;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    }
+
+    .border {
+        border: 1px solid #dee2e6 !important;
+    }
+
+    .small-box > .inner {
+        padding: 10px;
+        border: 3px solid #FF5733;
+    }
+
+    .small-box h3 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin: 0 0 10px;
+        padding: 0;
+        white-space: nowrap;
+    }
+
+    .small-box h3, .small-box p {
+        z-index: 5;
+    }
+
+    .small-box p {
+        font-size: 13px;
+    }
+
+    .small-box:hover .icon > i, .small-box:hover .icon > i.fa, .small-box:hover .icon > i.fab, .small-box:hover .icon > i.fad, .small-box:hover .icon > i.fal, .small-box:hover .icon > i.far, .small-box:hover .icon > i.fas, .small-box:hover .icon > i.ion {
+        transform: scale(1.1);
+    }
+    /* .small-box .icon {
+                color: rgba(0,0,0,.15);
+                z-index: 0;
+            } */
+    .small-box .icon > i.fa, .small-box .icon > i.fab, .small-box .icon > i.fad, .small-box .icon > i.fal, .small-box .icon > i.far, .small-box .icon > i.fas, .small-box .icon > i.ion {
+        font-size: 70px;
+        top: 20px;
+    }
+
+    .small-box .icon > i {
+        font-size: 70px;
+        position: absolute;
+        right: 15px;
+        top: -5px;
+        transition: transform .3s linear;
+    }
+
+    .fa, .fas {
+        font-weight: 900;
+    }
+
+    .fa, .far, .fas {
+        font-family: "Font Awesome 5 Free";
+    }
+
+    .fa, .fab, .fad, .fal, .far, .fas {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+    }
+
+    .fa-building:before {
+        content: "\f1ad";
+    }
+
+    .heading {
+        text-align: center;
+        color: darkgray !important;
+        font-weight: bolder;
+        margin: 20px 0;
+    }
+
+    /* Additional CSS for table borders */
+    table.datatable th, table.datatable td {
+        border: 3px solid #FF5733 !important;
+        padding: 10px;
+    }
+
+    table.datatable thead th {
+        border-bottom: 3px solid #FF5733 !important;
+    }
+</style>
+<section class="p-4 bg-dark" style="border-top: 4px solid #FF5733; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+    <div class="pagetitle">
+        <h1 style="color:darkgray; font-weight:bolder">Admin Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Admin" style="color:darkgray;">Home</a></li>
+                <li class="breadcrumb-item active" style="color:darkgray;">Dashboard</li>
+            </ol>
+        </nav>
+    </div>
+
+    <section class="section dashboard my-4">
+        <div class="row">
+            <!-- Total Buses -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="small-box bg-light shadow-sm border">
+                    <div class="inner">
+                        <h3>@Model.TotalBuses</h3>
+                        <p>Total Buses</p>
+                    </div>
+                    <div class="icon">
+                        <i class="bi bi-bus-front" style="color: #FF5733 !important;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Routes -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="small-box bg-light shadow-sm border">
+                    <div class="inner">
+                        <h3>@Model.TotalRoutes</h3>
+                        <p>Total Routes</p>
+                    </div>
+                    <div class="icon">
+                        <i class="bi bi-sign-turn-right" style="color: #FF5733 !important;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Employees -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="small-box bg-light shadow-sm border">
+                    <div class="inner">
+                        <h3>@Model.TotalEmployees</h3>
+                        <p>Total Employees</p>
+                    </div>
+                    <div class="icon">
+                        <i class="bi bi-person-fill" style="color: #FF5733 !important;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Employees -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="small-box bg-light shadow-sm border">
+                    <div class="inner">
+                        <h3>@Model.TotalBranches</h3>
+                        <p>Total Branches</p>
+                    </div>
+                    <div class="icon">
+                        <i class="bi bi-building" style="color: #FF5733 !important;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Bus Types -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="small-box bg-light shadow-sm border">
+                    <div class="inner">
+                        <h3>@Model.TotalBusTypes</h3>
+                        <p>Total Bus Types</p>
+                    </div>
+                    <div class="icon">
+                        <i class="bi bi-bus-front" style="color: #FF5733 !important;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Locations -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="small-box bg-light shadow-sm border">
+                    <div class="inner">
+                        <h3>@Model.TotalLocations</h3>
+                        <p>Total Locations</p>
+                    </div>
+                    <div class="icon">
+                        <i class="bi bi-geo-alt" style="color: #FF5733 !important;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3 class="heading">Buses Departured or Arrived Today</h3>
+        <table class="table datatable text-center py-3" style="border: 3px solid #FF5733; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">S.No</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Bus Number</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Total Seats</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Available Seats</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Departure Time</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Arrival Time</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Bus Type</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Route</th>
+                </tr>
+            </thead>>
+            <tbody>
+                @if (Model?.BusesToday != null && Model.BusesToday.Any())
+                {
+                    @foreach (var item in Model.BusesToday)
+                    {
+                        <tr>
+                            <td>@serialNumberfortodaybus</td>
+                            <td>@item.BusNumber</td>
+                            <td>@item.TotalSeats</td>
+                            <td>@item.AvailableSeats</td>
+                            <td>@String.Format("{0:dd/MM/yyyy hh:mm tt}", item.DepartureTime)</td>
+                            <td>@String.Format("{0:dd/MM/yyyy hh:mm tt}", item.ArrivalTime)</td>
+                            <td>@item.BusType.BusTypeName</td>
+                            <td>
+                                @item.Route.RouteName (@item.Route.StartingPlaceNavigation.LocationName - @item.Route.DestinationPlaceNavigation.LocationName)
+                            </td>
+
+                        </tr>
+                        serialNumberfortodaybus++;
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8" class="text-center">No Bus Found</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h3 class="heading">Buses Departured or Arrived Tomorrow</h3>
+        <table class="table datatable text-center py-3" style="border: 3px solid #FF5733; border-collapse: collapse;">
+            <thead style="border: 3px solid #FF5733;">
+                <tr>
+                    <th style="border-bottom: 3px solid #FF5733; padding: 10px;">S.No</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Bus Number</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Total Seats</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Available Seats</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Departure Time</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Arrival Time</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Bus Type</th>
+                    <th style="border: 3px solid #FF5733; padding: 10px;">Route</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model?.BusesTomorrow != null && Model.BusesTomorrow.Any())
+                {
+                    @foreach (var item in Model.BusesTomorrow)
+                    {
+                        <tr>
+                            <td>@serialNumberfortomorrowbus</td>
+                            <td>@item.BusNumber</td>
+                            <td>@item.TotalSeats</td>
+                            <td>@item.AvailableSeats</td>
+                            <td>@String.Format("{0:dd/MM/yyyy hh:mm tt}", item.DepartureTime)</td>
+                            <td>@String.Format("{0:dd/MM/yyyy hh:mm tt}", item.ArrivalTime)</td>
+                            <td>@item.BusType.BusTypeName</td>
+                            <td>
+                                @item.Route.RouteName (@item.Route.StartingPlaceNavigation.LocationName - @item.Route.DestinationPlaceNavigation.LocationName)
+                            </td>
+                        </tr>
+                        serialNumberfortomorrowbus++;
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8" class="text-center">No Bus Found</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </section>
+
+
+</section>
+

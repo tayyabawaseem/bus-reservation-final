@@ -1,0 +1,74 @@
+﻿@model IEnumerable<bus_reservation.Models.Location>
+
+@{
+    ViewData["Title"] = "Location List";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    var successCreateMessage = TempData["SuccessCreateMessage"] as string;
+    var successEditMessage = TempData["SuccessEditMessage"] as string;
+    var successDeletedMessage = TempData["SuccessDeleteMessage"] as string;
+    
+    int serialNumber = 1;
+}
+<div class="container-fluid pt-4 px-4 bg-dark">
+@* <h1>Index</h1> *@
+
+<h1>
+    <a asp-action="Create" style="color:gray ; font-weight:bolder;">Add New Location</a>
+</h1>
+@if (!string.IsNullOrEmpty(successCreateMessage))
+{
+        <div class="alert alert-success alert-dismissible fade show" style="background-color: gray; color: white; border: 2px solid #FF5733" role="alert">
+        <strong>@successCreateMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+else if (!string.IsNullOrEmpty(successEditMessage))
+{
+        <div class="alert alert-success alert-dismissible fade show" style="background-color: gray; color: white; border: 2px solid #FF5733" role="alert">
+        <strong>@successEditMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+    else if (!string.IsNullOrEmpty(successDeletedMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show" style="background-color: gray; color: white; border: 2px solid #FF5733" role="alert">
+            <strong>@successDeletedMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <table class="table datatable text-center py-3">
+        <thead>
+            <tr>
+                <th>S.No</th>
+            <th>
+                Location Name
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+{
+@foreach (var item in Model) {
+        <tr>
+                        <td>@serialNumber</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LocationId" style="color:#FF5733 ;">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.LocationId" style="color:#FF5733 ;">Delete</a>
+            </td>
+        </tr>
+                    serialNumber++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3" class="text-center">No Location Found</td>
+                </tr>
+            }
+    </tbody>
+</table>
+</div>

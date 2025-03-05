@@ -1,0 +1,370 @@
+﻿@model bus_reservation.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit Employee";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="container-fluid pt-4 px-4 bg-dark">
+    <h1 style=" font-weight:bolder; color:gray;">Edit Employee</h1>
+
+    <hr />
+    <div class="row g-4">
+        <div class="bg-dark rounded h-100 p-4">
+            <form asp-action="Edit" enctype="multipart/form-data">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="DateCreated" />
+                @* <p class="badge text-bg-success">Employee Code will not be Edited.</p> *@
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" id="nameInput" required placeholder="Enter Employee Name" />
+                                <span asp-validation-for="Name" id="nameError" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Fathername" class="control-label"></label>
+                                <input asp-for="Fathername" class="form-control" id="fathernameInput" required placeholder="Enter Employee's Father Name" />
+                                <span asp-validation-for="Fathername" id="fathernameError" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="form-group">
+                        <input name="oldEmail" type="hidden" value="@Model.Email" />
+                        <label asp-for="Email" class="control-label"></label>
+                        <input type="email" asp-for="Email" class="form-control" id="emailInput" required placeholder="Enter Valid Email Address" />
+
+                        @if (ViewBag.message == "Email already exists.")
+                        {
+                            <span class="text-danger">Email already exists.</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Dob" class="control-label"></label>
+                                <input type="date" asp-for="Dob" id="dobInput" class="form-control" placeholder="mm/dd/yyyy" required />
+                                <span id="dobError" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="MartialStatus" class="control-label"></label>
+                                <select asp-for="MartialStatus" class="form-control" required>
+                                    <option value="">-- Select Martial Status --</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Unmarried">Unmarried</option>
+                                </select>
+
+                                <span asp-validation-for="MartialStatus" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group input-group">
+                                <label asp-for="Password" class="control-label"></label>
+                                <div class="input-group">
+                                    <input name="oldPassword" type="hidden" value="@Model.Password" />
+                                    <input type="password" name="password" asp-for="Password" class="form-control" id="password" placeholder="Password should be 5 to 15 characters" />
+
+                                    <button type="button" class="btn btn-success" id="togglePassword" style="background-color:#FF5733!important;">
+                                        <i class="fas fa-eye" id="eyeIcon" ></i>
+                                    </button>
+                                </div>
+                                <p style="color:#FF5733;">Leave this field blank if you don't want to change password.</p>
+                                <span id="passwordError" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Age" class="control-label"></label>
+                                <input asp-for="Age" class="form-control" id="ageInput" required placeholder="Enter Age between 18 and 60" />
+                               
+                                <span id="ageError" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Contact" class="control-label"></label>
+                                <input asp-for="Contact" class="form-control" id="contactInput" required placeholder="Enter Valid Contact No. e.g. 03347865786" />
+                               
+                                <span id="contactError" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Qualification" class="control-label"></label>
+                                <select asp-for="Qualification" class="form-control" required>
+                                    <option value="">-- Select Qualification --</option>
+                                    <option value="Matriculation">Matriculation</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Undergraduate">Undergraduate</option>
+                                    <option value="Postgraduate">Postgraduate</option>
+                                </select>
+                                <span asp-validation-for="Qualification" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Designation" class="control-label"></label>
+                                <input asp-for="Designation" class="form-control" required placeholder="Enter Designation" />
+                                <span asp-validation-for="Designation" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Salary" class="control-label"></label>
+                                <input type="number" asp-for="Salary" class="form-control" id="salaryInput" required placeholder="Enter Salary (in Rs.)" />
+                             
+                                <span id="salaryError" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-6">
+                            <label asp-for="BranchId" class="control-label"></label>
+                            <select asp-for="BranchId" class="form-control" asp-items="ViewBag.Branches" required>
+                                <option value="">-- Select Branch --</option>
+                            </select>
+                            <span asp-validation-for="BranchId" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <input name="oldImage" type="hidden" value="@Model.EmployeeImage" />
+                                <label asp-for="EmployeeImage" class="control-label"></label>
+                                <input type="file" name="file" asp-for="EmployeeImage" class="form-control" />
+                   
+                                <p style="color:#FF5733;">Leave this field blank if you don't want to change employee image.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xl-12 mb-3">
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" required placeholder="Enter Valid Address" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xl-12 mt-4 mb-2">
+                    <div class="form-group">
+                        <input type="submit" value="Edit Employee" class="btn btn-outline-success w-100" style="background-color: transparent;font-weight:bolder; color: white; border-radius:10px; border: 3px solid #FF5733; width: 100%; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+                               onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+                               onmouseout="this.style.backgroundColor='transparent'; this.style.color='Whitesmoke' " />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a class="btn btn-outline-success" asp-action="Index" style="background-color: dimgrey;font-weight:bolder; color: whitesmoke; border-radius:10px; border: 3px solid; padding: 8px 12px; cursor: pointer; transition: 0.3s;"
+           onmouseover="this.style.backgroundColor='#FF5733'; this.style.color='Whitesmoke';"
+           onmouseout="this.style.backgroundColor='dimgrey'; this.style.color='Whitesmoke';">Back to List</a> <br /> <br />
+    </div>
+</div>
+
+<script>
+    function checkValidation() {
+        const errors = [
+            document.getElementById('passwordError').textContent,
+            document.getElementById('dobError').textContent,
+            document.getElementById('ageError').textContent,
+            document.getElementById('contactError').textContent,
+            document.getElementById('salaryError').textContent,
+            document.getElementById('nameError').textContent,
+            document.getElementById('fathernameError').textContent,
+        ];
+
+        // Enable or disable the submit button based on errors
+        const submitButton = document.querySelector('button[type="submit"]');
+        const hasErrors = errors.some(error => error !== "");
+
+        submitButton.disabled = hasErrors; // Disable the submit button if there are errors
+    }
+
+    // Your existing validation code...
+
+    // Toggle password visibility
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordField = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+            toggleButton.style.backgroundColor = "#FF5733";
+
+        } else {
+            passwordField.type = "password";
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        }
+            toggleButton.style.backgroundColor = "#FF5733";
+    });
+
+    // Validate password
+    document.getElementById('password').addEventListener('input', function () {
+        const password = this.value;
+        const passwordError = document.getElementById('passwordError');
+
+        const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{5,15}$/;
+
+        if (!passwordRegex.test(password)) {
+            passwordError.textContent = "Password must be 5-15 characters long, include at least one number, one uppercase letter, one lowercase letter, and one special character.";
+        } else {
+            passwordError.textContent = ""; // Clear error message when valid
+        }
+
+        checkValidation(); // Check validation after password input
+    });
+
+    window.onload = function () {
+        // Set the min and max date to ensure the employee is between 18 and 60 years old
+        var today = new Date();
+        var minAgeDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+        var maxAgeDate = new Date(today.getFullYear() - 60, today.getMonth(), today.getDate());
+
+        document.getElementById('dobInput').setAttribute('max', minAgeDate.toISOString().split('T')[0]);
+        document.getElementById('dobInput').setAttribute('min', maxAgeDate.toISOString().split('T')[0]);
+    };
+
+    document.getElementById('dobInput').addEventListener('change', function () {
+        var inputDate = new Date(this.value);
+        var today = new Date();
+        var minAgeDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+        var maxAgeDate = new Date(today.getFullYear() - 60, today.getMonth(), today.getDate());
+
+        if (inputDate > minAgeDate) {
+            document.getElementById('dobError').textContent = "Employee must be at least 18 years old.";
+            this.value = '';
+        } else if (inputDate < maxAgeDate) {
+            document.getElementById('dobError').textContent = "Employee must not be older than 60 years.";
+            this.value = '';
+        } else {
+            document.getElementById('dobError').textContent = '';
+        }
+
+        checkValidation(); // Check validation after date input
+    });
+
+    // Validate age input
+    document.getElementById('ageInput').addEventListener('input', function () {
+        const age = this.value;
+        const ageError = document.getElementById('ageError');
+
+        if (age < 18 || age > 60) {
+            ageError.textContent = "Age must be between 18 and 60.";
+        } else {
+            ageError.textContent = ""; // Clear error message when valid
+        }
+
+        checkValidation(); // Check validation after age input
+    });
+
+    // Validate contact input
+    document.getElementById('contactInput').addEventListener('input', function () {
+        const contact = this.value;
+        const contactError = document.getElementById('contactError');
+
+        const contactRegex = /^0\d{10}$/;
+
+        if (!contactRegex.test(contact)) {
+            contactError.textContent = "Contact must be exactly 11 digits and start with '0'.";
+        } else {
+            contactError.textContent = ""; // Clear error message when valid
+        }
+
+        checkValidation(); // Check validation after contact input
+    });
+
+    // Validate salary input
+    document.getElementById('salaryInput').addEventListener('input', function () {
+        const salary = this.value;
+        const salaryError = document.getElementById('salaryError');
+
+        if (salary <= 5000) {
+            salaryError.textContent = "Salary must be greater than 5000.";
+        } else {
+            salaryError.textContent = ""; // Clear error message when valid
+        }
+
+        checkValidation(); // Check validation after salary input
+    });
+
+    // Validate Name field
+    document.getElementById('nameInput').addEventListener('input', function () {
+        const name = this.value;
+        const nameError = document.getElementById('nameError');
+
+        const nameRegex = /^[A-Za-z\s]+$/;
+
+        if (!nameRegex.test(name)) {
+            nameError.textContent = "Name must contain only letters and spaces.";
+        } else {
+            nameError.textContent = ""; // Clear error message when valid
+        }
+
+        checkValidation(); // Check validation after name input
+    });
+
+    // Validate Father name field
+    document.getElementById('fathernameInput').addEventListener('input', function () {
+        const fathername = this.value;
+        const fathernameError = document.getElementById('fathernameError');
+
+        const fathernameRegex = /^[A-Za-z\s]+$/;
+
+        if (!fathernameRegex.test(fathername)) {
+            fathernameError.textContent = "Father's name must contain only letters and spaces.";
+        } else {
+            fathernameError.textContent = ""; // Clear error message when valid
+        }
+
+        checkValidation(); // Check validation after father name input
+    });
+
+    // Prevent form submission if there are errors
+    document.getElementById('myForm').addEventListener('submit', function (e) {
+        if (document.querySelector('button[type="submit"]').disabled) {
+            e.preventDefault(); // Prevent form submission
+        }
+    });
+</script>
